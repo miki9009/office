@@ -1,0 +1,70 @@
+@import '../../main/main.component.css';
+
+.icon-cell{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: 50px;
+    height: 35px;
+}
+
+.icon-cell-text{
+    width: 90px;
+    height: 70px;
+}
+
+.icon-cell button{
+    width: 35px;
+    height: 40px;
+}
+
+.icon-cell button i .fa {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+
+#datatable thead tr{
+    background-color: #2C3E50;
+    color: white;
+}
+
+#datatable thead tr th{
+    text-align: center;
+    border-bottom-width: 3px;
+}
+
+#datatable tbody tr td{
+    text-align: center;
+}
+
+#datatable tbody tr td button{
+    width: 35px;
+    padding: 0 0 0 0;
+}
+
+
+.icon-color-red {
+    color: rgba(216, 29, 29, 0.733);
+    margin: 0 0 0 0;
+}
+
+.icon-color-green {
+    color: rgba(11, 128, 0, 0.733);
+    margin: 0 0 0 0;
+}
+
+.icon-color-dark{
+    color: rgb(30, 30, 31);
+    margin: 0 0 0 0;
+}
+
+.icon-color-theme{
+    color: #2C3E50;
+    margin: 0 0 0 0;
+}
+.icon-color-light{
+    color: rgb(244, 246, 248);
+    margin: 0 0 0 0;
+}
+
+

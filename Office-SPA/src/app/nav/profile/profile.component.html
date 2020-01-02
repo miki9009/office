@@ -1,0 +1,210 @@
+<div class="cards-container">
+
+<div class="row">
+
+
+<div class="col card box-shadow">
+
+
+<!-- <div class="btn btn-primary" (click)="back()" >Powrót</div> -->
+
+<div *ngIf="worker != null && user != null && workerDetails != null" class="container">
+    <div class="row">
+  		<div class="col-sm-10"><h2>{{worker.name}} {{worker.surname}}</h2></div>
+    </div>
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+
+
+      <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Uaktualnij zdjęcie</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div>
+
+
+          <div class="panel panel-default">
+            <div *ngIf="worker.checkedIn" class="panel-heading"><strong>Status:</strong> <i class="fa fa-circle fa-1x ml-5 mr-2" style="color:#5cb85c"></i>W pracy</div>
+            <div *ngIf="!worker.checkedIn" class="panel-heading"><strong>Status:</strong> <i class="fa fa-circle fa-1x ml-5 mr-2" style="color:red"></i>Nie pracuje</div>
+            <div class="panel-body" style="text-align: center; text-transform: uppercase;"><strong>{{worker.jobPosition}}</strong></div>
+          </div>
+
+
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Aktywność <i class="fa fa-user-circle fa-1x"></i></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Ostatnie logowanie</strong></span></li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>{{worker.lastLogin  | date:'medium'}}</strong></span></li>
+          </ul>
+
+        </div><!--/col-3-->
+    	<div class="col-sm-9 profile-details">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Informacje</a></li>
+                <li><a data-toggle="tab" href="#messages">Zmiana hasła</a></li>
+                <li><a data-toggle="tab" href="#settings">Inne</a></li>
+              </ul>
+
+            <!--NAME-->
+          <div class="tab-content tab-pane active">
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-user profile-icon fa-lg"></i>Imię: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="worker-name" class="form-control profile-input disabled" placeholder="Jan" value="{{worker.name}}" [(ngModel)]="worker.name" disabled />
+                </div>
+                <div class="col-1" *ngIf="role != 3">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('worker-name')"></i>
+                </div>
+            </div>
+
+            <!--SURNAME-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-user profile-icon fa-lg"></i>Nazwisko: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="worker-surname" class="form-control profile-input disabled" placeholder="Kowalski" value="{{worker.surname}}" [(ngModel)]="worker.surname" disabled/>
+                </div>
+                <div class="col-1" *ngIf="role != 3">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('worker-surname')"></i>
+                </div>
+            </div>
+
+            <!--LOGIN-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-sign-in profile-icon fa-lg"></i>Login: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="worker-login" class="form-control profile-input disabled"  placeholder="jKowalski" value="{{user.username}}" [(ngModel)]="user.username" disabled/>
+                </div>
+                <div class="col-1" *ngIf="role != 3">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('worker-login')"></i>
+                </div>
+            </div>
+
+            <!--SUPERVISOR-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-black-tie profile-icon fa-lg"></i>Przełożony: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="worker-supervisor" class="form-control profile-input disabled"  placeholder="Andrzej Nowak" value="{{worker.supervisor}}" [(ngModel)]="worker.supervisor" disabled/>
+                </div>
+                <div class="col-1" *ngIf="role != 3">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('worker-supervisor')"></i>
+                </div>
+            </div>
+
+            <!--JOB POSITION-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-id-badge profile-icon fa-lg"></i>Stanowisko: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="worker-job-position" class="form-control profile-input disabled" placeholder="Magazynier"  value="{{worker.jobPosition}}" [(ngModel)]="worker.jobPosition" disabled/>
+                </div>
+                <div class="col-1" *ngIf="role != 3">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('worker-job-position')"></i>
+                </div>
+            </div>
+
+            <!--EMAIL-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-envelope-square profile-icon fa-lg"></i>Email: </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input id="email" class="form-control profile-input disabled"  placeholder="j.kowalski@mail.com" value="{{user.email}}" [(ngModel)]="user.email" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit"   (click)="changeToActive('email')"></i>
+                </div>
+            </div>
+
+            <!--PRIVATE PHONE NUMBER-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-id-badge profile-icon fa-lg"></i>Tel. (prywatny): </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input class="form-control profile-input disabled"  id="private-phone-number" placeholder="000-000-000" value="{{workerDetails.privatePhoneNumber}}" [(ngModel)]="workerDetails.privatePhoneNumber" (focusout)="validation.phoneFormat('private-phone-number')" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit"  (click)="changeToActive('private-phone-number')"></i>
+                </div>
+            </div>
+
+            <!--WORK PHONE NUMBER-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-phone-square profile-icon fa-lg"></i>Tel. (służbowy): </h4>
+                </div>
+                <div class="col-8 profile-col-val">
+                    <input class="form-control profile-input disabled" id="work-phone-number"  placeholder="000-000-000" value="{{workerDetails.workPhoneNumber}}" [(ngModel)]="workerDetails.workPhoneNumber"  disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('work-phone-number')"></i>
+                </div>
+            </div>
+
+         <!--CITY-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-map-marker profile-icon fa-lg"></i>Miasto: </h4>
+                </div>
+                <div class="col-5 form-inline profile-col-val">
+                    <input id="city" class="form-control profile-input disabled col-12" placeholder="Warszawa" value="{{workerDetails.city}}" [(ngModel)]="workerDetails.city" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('city')" ></i>
+                </div>
+                <div class="col-2 form-inline profile-col-val">
+                    <input id="post-code" class="form-control profile-input disabled col-12" placeholder="88-200" value="{{workerDetails.postCode}}" [(ngModel)]="workerDetails.postCode" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('post-code')"></i>
+                </div>
+
+            </div>
+
+            <!--ADDRESS-->
+            <div class="row">
+                <div class="col-3 profile-col-name">
+                    <h4 class="profile-name-text"><i class="fa fa-home profile-icon fa-lg"></i>Ulica: </h4>
+                </div>
+                <div class="col-5 form-inline profile-col-val">
+                    <input id="street" class="form-control profile-input disabled col-12"  placeholder="Grunwaldzka" value="{{workerDetails.street}}" [(ngModel)]="workerDetails.street" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('street')"></i>
+                </div>
+                <div class="col-2 form-inline profile-col-val">
+                    <input id="home-number" class="form-control profile-input disabled col-12"  placeholder="200/2a" value="{{workerDetails.homeNumber}}" [(ngModel)]="workerDetails.homeNumber" disabled/>
+                </div>
+                <div class="col-1">
+                    <i class="fa fa-edit fa-2x profile-edit" (click)="changeToActive('home-number')"></i>
+                </div>
+
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-12">
+                     <br>
+                       <button class="btn btn-lg btn-success mr-5" type="submit" (click)="saveChanges()"><i class="glyphicon glyphicon-ok-sign mr-2"></i> Zapisz zmiany</button>
+                        <button class="btn btn-lg btn-primary" type="reset"><i class="glyphicon glyphicon-repeat mr-2"></i> Cofnij zmiany</button>
+                 </div>
+           </div>
+
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+</div>
+</div>
+
+</div>

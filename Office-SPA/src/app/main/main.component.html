@@ -1,0 +1,66 @@
+<div class="jumbotron main-container">
+  <div class="row content-row">
+    <div class="col-lg-2 nav-left box-shadow">
+      <p class="modules-header">MODUŁY</p>
+      <ul>
+          <li routerLink="/main" routerLinkActive="active-link">
+              <div class="div-list">
+                <div  class="modules-header"><span><i class="fa fa-desktop fa-2x fa-gray"></i></span><p class="p-p">PULPIT</p></div>
+              </div>
+            </li>
+
+        <li routerLink="/main/Office" routerLinkActive="active-link">
+          <div class="div-list">
+            <div  class="modules-header"><span><i class="fa fa-tags fa-2x fa-gray"></i></span><p class="p-p">FIRMA</p></div>
+          </div>
+        </li>
+
+        <li routerLink="/main/timetable" routerLinkActive="active-link">
+            <div class="div-list">
+              <div  class="modules-header"><span><i class="fa fa-calendar fa-2x fa-gray"></i></span><p class="p-p">TERMINARZ</p></div>
+            </div>
+        </li>
+
+        <li>
+          <div class="div-list">
+            <div  class="modules-header"><span><i class="fa fa-file fa-2x fa-gray"></i></span><p class="p-p">FAKTURY</p></div>
+          </div>
+      </li>
+
+      <li routerLink="/main/workers-list" routerLinkActive="active-link">
+        <div class="div-list">
+          <div  class="modules-header"><span><i class="fa fa-users fa-2x fa-gray"></i></span><p class="p-p">PRACOWNICY</p></div>
+        </div>
+    </li>
+
+    <li>
+      <div class="div-list" routerLink="/main/main-tasks" routerLinkActive="active-link">
+        <div  class="modules-header"><span><i class="fa fa-tasks fa-2x fa-gray"></i></span><p class="p-p">ZADANIA</p></div>
+      </div>
+  </li>
+
+  <li>
+    <div class="div-list">
+      <div  class="modules-header"><span><i class="fa fa-sticky-note fa-2x fa-gray"></i></span><p class="p-p">NOTATKI</p></div>
+    </div>
+</li>
+
+<li>
+  <div class="div-list">
+    <div  class="modules-header"><span><i class="fa fa-credit-card fa-2x fa-gray"></i></span><p class="p-p">KLIENCI</p></div>
+  </div>
+</li>
+
+<li>
+  <div class="div-list">
+    <div  class="modules-header"><span><i class="fa fa-folder fa-2x fa-gray"></i></span><p class="p-p">PLIKI</p></div>
+  </div>
+</li>
+      </ul>
+    </div>
+
+    <div id="view-container" class="col-md-10 cards-container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

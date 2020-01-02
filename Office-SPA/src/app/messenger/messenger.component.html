@@ -1,0 +1,188 @@
+<div class="row messenger-content">
+  <div class="col-sm-3 members-list-parent">
+    <div class="col-sm-11 members-list">
+      <h5 class="members-list-title">Wiadomości</h5>
+      <ul>
+        <app-messenger-contact [events]="socketConnected.asObservable()" [notificationEvent]="notificationSend.asObservable()" [eventDisconnected]="socketDisconnected.asObservable()" *ngFor="let worker of workers" (workerId)="setCurrentContact(worker.id)" [worker]="worker" (click)="highlight('contact-'+ worker.id)"></app-messenger-contact>
+        <!-- <li class="in-active">
+                    <div class="inavailable-icon"></div>
+                    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+                            class="avatar img-circle img-thumbnail" alt="avatar"></div>Jan Kowalski
+                </li>
+                <li class="active">
+
+                    <div class="available-icon"></div>
+                    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+                            class="avatar img-circle img-thumbnail" alt="avatar"></div>Jan Kowalski
+                </li>
+                <li class="in-active">
+                    <div class="inavailable-icon"></div>
+                    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+                            class="avatar img-circle img-thumbnail" alt="avatar"></div>Mikołaj Rambiert
+                </li>
+                <li class="in-active">
+                    <div class="inavailable-icon"></div>
+                    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+                            class="avatar img-circle img-thumbnail" alt="avatar"></div>Jan Kowalski
+                </li>
+                <li class="in-active">
+                    <div class="inavailable-icon"></div>
+                    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+                            class="avatar img-circle img-thumbnail" alt="avatar"></div>1234581 12349285724
+                </li> -->
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="currentContact != null" class="col-sm-9 conversation-content container-invisible" id="conversation-container">
+    <div class="col-sm-12 messenger-contact-info">
+      <h4 style="display: inline-flex">{{ currentContact.name }} {{ currentContact.surname }}</h4><span *ngIf="currentContact.id == senderId" class="you-span"> (Ty)</span>
+    </div>
+    <div class="messages-container" id="messages-holder" >
+
+    </div>
+    <div class="row messages-input">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text btn emoticons-button" (click)="openEmoticons()">😊
+            <div id="emoticons-container" class="emoticons-list container-invisible">
+              <div class="row">
+
+                <div class="col-2" id="emot-1" (click)="addEmoticon('emot-1')">😀</div>
+                <div class="col-2" id="emot-2" (click)="addEmoticon('emot-2')">😬</div>
+                <div class="col-2" id="emot-3" (click)="addEmoticon('emot-3')">😁</div>
+                <div class="col-2" id="emot-4" (click)="addEmoticon('emot-4')">😂</div>
+                <div class="col-2" id="emot-5" (click)="addEmoticon('emot-5')">😃</div>
+                <div class="col-2" id="emot-6" (click)="addEmoticon('emot-6')">😄</div>
+
+                <div class="col-2" id="emot-7" (click)="addEmoticon('emot-7')">😅</div>
+                <div class="col-2" id="emot-8" (click)="addEmoticon('emot-8')">😆</div>
+                <div class="col-2" id="emot-9" (click)="addEmoticon('emot-9')">😇</div>
+                <div class="col-2" id="emot-10" (click)="addEmoticon('emot-10')">😉</div>
+                <div class="col-2" id="emot-11" (click)="addEmoticon('emot-11')">😊</div>
+                <div class="col-2" id="emot-12" (click)="addEmoticon('emot-12')">🙃</div>
+
+                <div class="col-2" id="emot-13" (click)="addEmoticon('emot-13')">😋</div>
+                <div class="col-2" id="emot-14" (click)="addEmoticon('emot-14')">😌</div>
+                <div class="col-2" id="emot-15" (click)="addEmoticon('emot-15')">😍</div>
+                <div class="col-2" id="emot-16" (click)="addEmoticon('emot-16')">😘</div>
+                <div class="col-2" id="emot-17" (click)="addEmoticon('emot-17')">😗</div>
+                <div class="col-2" id="emot-18" (click)="addEmoticon('emot-18')">😯</div>
+
+                <div class="col-2" id="emot-19" (click)="addEmoticon('emot-19')">😙</div>
+                <div class="col-2" id="emot-20" (click)="addEmoticon('emot-20')">😚</div>
+                <div class="col-2" id="emot-21" (click)="addEmoticon('emot-21')">😜</div>
+                <div class="col-2" id="emot-22" (click)="addEmoticon('emot-22')">😝</div>
+                <div class="col-2" id="emot-23" (click)="addEmoticon('emot-23')">😛</div>
+                <div class="col-2" id="emot-24" (click)="addEmoticon('emot-24')">🤑</div>
+
+                <div class="col-2" id="emot-25" (click)="addEmoticon('emot-25')">🤓</div>
+                <div class="col-2" id="emot-26" (click)="addEmoticon('emot-26')">😎</div>
+                <div class="col-2" id="emot-27" (click)="addEmoticon('emot-27')">🤗</div>
+                <div class="col-2" id="emot-28" (click)="addEmoticon('emot-28')">😏</div>
+                <div class="col-2" id="emot-29" (click)="addEmoticon('emot-29')">😶</div>
+                <div class="col-2" id="emot-30" (click)="addEmoticon('emot-30')">😐</div>
+
+                <div class="col-2" id="emot-31" (click)="addEmoticon('emot-31')">😑</div>
+                <div class="col-2" id="emot-32" (click)="addEmoticon('emot-32')">😒</div>
+                <div class="col-2" id="emot-33" (click)="addEmoticon('emot-33')">🙄</div>
+                <div class="col-2" id="emot-34" (click)="addEmoticon('emot-34')">🤔</div>
+                <div class="col-2" id="emot-35" (click)="addEmoticon('emot-35')">😳</div>
+                <div class="col-2" id="emot-36" (click)="addEmoticon('emot-36')">😞</div>
+
+                <div class="col-2" id="emot-37" (click)="addEmoticon('emot-37')">😟</div>
+                <div class="col-2" id="emot-38" (click)="addEmoticon('emot-38')">😠</div>
+                <div class="col-2" id="emot-39" (click)="addEmoticon('emot-39')">😡</div>
+                <div class="col-2" id="emot-40" (click)="addEmoticon('emot-40')">😔</div>
+                <div class="col-2" id="emot-41" (click)="addEmoticon('emot-41')">😕</div>
+                <div class="col-2" id="emot-42" (click)="addEmoticon('emot-42')">🙁</div>
+
+                <div class="col-2" id="emot-43" (click)="addEmoticon('emot-44')">😤</div>
+                <div class="col-2" id="emot-44" (click)="addEmoticon('emot-45')">😣</div>
+                <div class="col-2" id="emot-45" (click)="addEmoticon('emot-46')">😡</div>
+                <div class="col-2" id="emot-46" (click)="addEmoticon('emot-47')">😖</div>
+                <div class="col-2" id="emot-47" (click)="addEmoticon('emot-48')">😫</div>
+                <div class="col-2" id="emot-48" (click)="addEmoticon('emot-49')">😩</div>
+
+                <div class="col-2" id="emot-43" (click)="addEmoticon('emot-44')">😮</div>
+                <div class="col-2" id="emot-44" (click)="addEmoticon('emot-45')">😱</div>
+                <div class="col-2" id="emot-45" (click)="addEmoticon('emot-46')">😨</div>
+                <div class="col-2" id="emot-46" (click)="addEmoticon('emot-47')">😰</div>
+                <div class="col-2" id="emot-47" (click)="addEmoticon('emot-48')">😯</div>
+                <div class="col-2" id="emot-48" (click)="addEmoticon('emot-49')">😦</div>
+
+                <div class="col-2" id="emot-49" (click)="addEmoticon('emot-49')">😧</div>
+                <div class="col-2" id="emot-50" (click)="addEmoticon('emot-50')">😥</div>
+                <div class="col-2" id="emot-51" (click)="addEmoticon('emot-51')">😢</div>
+                <div class="col-2" id="emot-52" (click)="addEmoticon('emot-52')">😪</div>
+                <div class="col-2" id="emot-53" (click)="addEmoticon('emot-53')">😓</div>
+                <div class="col-2" id="emot-54" (click)="addEmoticon('emot-54')">😭</div>
+
+                <div class="col-2" id="emot-55" (click)="addEmoticon('emot-55')">😵</div>
+                <div class="col-2" id="emot-56" (click)="addEmoticon('emot-56')">😲</div>
+                <div class="col-2" id="emot-57" (click)="addEmoticon('emot-57')">🤐</div>
+                <div class="col-2" id="emot-58" (click)="addEmoticon('emot-58')">😷</div>
+                <div class="col-2" id="emot-59" (click)="addEmoticon('emot-59')">🤒</div>
+                <div class="col-2" id="emot-60" (click)="addEmoticon('emot-60')">🤕</div>
+
+                <div class="col-2" id="emot-61" (click)="addEmoticon('emot-61')">😴</div>
+                <div class="col-2" id="emot-62" (click)="addEmoticon('emot-62')">💤</div>
+                <div class="col-2" id="emot-63" (click)="addEmoticon('emot-63')">💩</div>
+                <div class="col-2" id="emot-64" (click)="addEmoticon('emot-64')">😈</div>
+                <div class="col-2" id="emot-65" (click)="addEmoticon('emot-65')">👿</div>
+                <div class="col-2" id="emot-66" (click)="addEmoticon('emot-66')">👹</div>
+
+                <div class="col-2" id="emot-67" (click)="addEmoticon('emot-67')">👺</div>
+                <div class="col-2" id="emot-68" (click)="addEmoticon('emot-68')">💀</div>
+                <div class="col-2" id="emot-69" (click)="addEmoticon('emot-69')">👻</div>
+                <div class="col-2" id="emot-70" (click)="addEmoticon('emot-70')">🤖</div>
+                <div class="col-2" id="emot-71" (click)="addEmoticon('emot-71')">🐵</div>
+                <div class="col-2" id="emot-72" (click)="addEmoticon('emot-72')">🙉</div>
+
+                <div class="col-2" id="emot-73" (click)="addEmoticon('emot-73')">🙊</div>
+                <div class="col-2" id="emot-74" (click)="addEmoticon('emot-74')">❤️</div>
+                <div class="col-2" id="emot-75" (click)="addEmoticon('emot-75')">❣</div>
+                <div class="col-2" id="emot-76" (click)="addEmoticon('emot-76')">💕</div>
+                <div class="col-2" id="emot-77" (click)="addEmoticon('emot-77')">💖</div>
+                <div class="col-2" id="emot-78" (click)="addEmoticon('emot-78')">💘</div>
+
+                <div class="col-2" id="emot-79" (click)="addEmoticon('emot-79')">💔</div>
+                <div class="col-2" id="emot-80" (click)="addEmoticon('emot-80')">💗</div>
+                <div class="col-2" id="emot-81" (click)="addEmoticon('emot-81')">🎧</div>
+                <div class="col-2" id="emot-82" (click)="addEmoticon('emot-82')">⚽</div>
+                <div class="col-2" id="emot-83" (click)="addEmoticon('emot-83')">🏋</div>
+                <div class="col-2" id="emot-84" (click)="addEmoticon('emot-84')">🚴</div>
+
+                <div class="col-2" id="emot-85" (click)="addEmoticon('emot-85')">👍</div>
+                <div class="col-2" id="emot-86" (click)="addEmoticon('emot-86')">👎</div>
+                <div class="col-2" id="emot-87" (click)="addEmoticon('emot-87')">✌</div>
+                <div class="col-2" id="emot-88" (click)="addEmoticon('emot-88')">👏</div>
+                <div class="col-2" id="emot-89" (click)="addEmoticon('emot-89')">👋</div>
+                <div class="col-2" id="emot-90" (click)="addEmoticon('emot-90')">🖐</div>
+
+                <div class="col-2" id="emot-91" (click)="addEmoticon('emot-91')">🍴</div>
+                <div class="col-2" id="emot-92" (click)="addEmoticon('emot-92')">🍔</div>
+                <div class="col-2" id="emot-93" (click)="addEmoticon('emot-93')">🎂</div>
+                <div class="col-2" id="emot-94" (click)="addEmoticon('emot-94')">🍺</div>
+                <div class="col-2" id="emot-95" (click)="addEmoticon('emot-95')">🍻</div>
+                <div class="col-2" id="emot-96" (click)="addEmoticon('emot-96')">🍷</div>
+
+                <div class="col-2" id="emot-97" (click)="addEmoticon('emot-97')">📞</div>
+                <div class="col-2" id="emot-98" (click)="addEmoticon('emot-98')">⌚</div>
+                <div class="col-2" id="emot-99" (click)="addEmoticon('emot-99')">⏰</div>
+                <div class="col-2" id="emot-100" (click)="addEmoticon('emot-100')">⏳</div>
+                <div class="col-2" id="emot-101" (click)="addEmoticon('emot-101')">🚽</div>
+                <div class="col-2" id="emot-102" (click)="addEmoticon('emot-102')">🔑</div>
+
+              </div>
+          </div>
+        </div>
+        </div>
+        <input type="text" class="form-control" placeholder="Wiadomość..." id="send-message-input" (keyup)="onEnter($event)" />
+        <div class="input-group-append">
+          <button id="message-button" class="btn btn-primary pl-5 pr-5" (click)="send()" >Wyślij</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

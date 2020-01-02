@@ -1,0 +1,255 @@
+
+.nav-left, .content-row{
+  color: rgba(13, 27, 62, 0.7);
+}
+.nav-left {
+  height: calc(100vh - 80px);
+  background: white;
+}
+
+.nav-left ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-left li {
+  margin-left: 10px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  -moz-box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  border: 1px solid rgba(26, 54, 126, 0.125);
+}
+
+.content-row {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.main-container {
+  padding: 0px !important;
+  margin: 0 !important;
+  background-color: rgb(245, 244, 244);
+}
+
+.card {
+  margin: 15px;
+  padding: 0 !important;
+  min-height: 200px;
+  background: white;
+  border-radius: 10px;
+}
+
+.cards-container {
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+}
+
+.card-header {
+  padding: 0 !important;
+  margin:0 !important;
+  border-bottom: 1px solid rgb(228, 228, 228);
+  height: 60px;
+  width: 100%;
+  background-color: rgb(244, 250, 253);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-header h5 {
+  padding: 10px;
+  margin: 10px;
+}
+
+.card-footer {
+  padding: 0 !important;
+  margin:0 !important;
+  border-top: 1px solid rgb(228, 228, 228);
+  height: 60px;
+  width: 100%;
+  background: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card-body {
+
+}
+
+
+
+.btn-primary:hover {
+  cursor: pointer;
+}
+
+.task-card {
+  border-bottom: 1px solid rgb(228, 228, 228);
+  padding: 0 0 0 5px;
+  margin: 0;
+  border-left: rgb(168, 211, 107) 4px solid;
+}
+
+.task-card-hour{
+  border-right: 1px solid  rgb(228, 228, 228);
+  padding: 3px 6px 3px 6px;
+  background-color: rgb(141, 182, 223);
+  text-shadow: -1px -1px 0  rgb(106, 151, 197), 1px -1px 0  rgb(106, 151, 197), -1px 1px 0  rgb(106, 151, 197), 1px 1px 0  rgb(106, 151, 197);
+  color: white;
+  text-align: center;
+  display: inline;
+}
+
+.task-card-brfief {
+  min-height: 30px;
+}
+
+.task-card-title {
+  margin-left: 10px;
+  display: inline;
+}
+
+.task-card-description {
+  margin: -8px 0 0 0;
+  padding: 10px;
+  font-size: 0.9em;
+  font-style: italic;
+  color: rgb(179, 179, 179);
+  display: inline;
+}
+
+.tasks-day {
+  float: right;
+  color: gray;
+  font-style: italic;
+}
+
+.modules-header {
+  padding: 5px 10px 5px 10px;
+  font-weight: 900;
+  color: #2C3E50;
+  border-bottom:  1px solid rgb(228, 228, 228);
+}
+
+.modules-header:focus{
+  background-color: #2C3E50;
+}
+
+.fa-gray {
+  color: rgb(235, 232, 232);
+}
+
+.div-list div:hover {
+  color:black;
+  cursor: pointer;
+}
+
+.div-list:hover .fa-gray {
+  color:rgb(110, 109, 109);
+}
+
+
+.div-list:hover .p-p {
+  color:black;
+}
+
+.div-list span i {
+  height: 50px;
+  width: 40px;
+}
+
+.div-list div p{
+  display: inline-block;
+  margin-left: 20px;
+  text-align: center;
+  /* color: rgb(80, 80, 80); */
+  color: rgb(141, 141, 141);
+}
+
+.Office-profile {
+  list-style: none;
+}
+
+.Office-profile h4 {
+  font-weight: 900;
+}
+
+.Office-brief-right-col {
+  border-bottom:  1px solid rgb(228, 228, 228);
+  border-left: 4px double rgb(228, 228, 228);
+  border-right: 1px solid rgb(228, 228, 228);
+  color: rgb(116, 116, 116);
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 15px;
+  padding: 10px 10px 5px 10px;
+}
+
+.Office-brief-left-col {
+  padding: 5px 10px 5px 40px;
+  border-bottom:  1px solid rgb(228, 228, 228);
+  margin-bottom: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+
+}
+
+.point {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color:  rgb(49, 87, 124);
+  border: solid 3px rgb(228, 228, 228);
+  position: absolute;
+  left: -5px;
+  top: -5px;
+}
+
+.point i {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: white;
+}
+
+@media screen and (max-width: 1024px) {
+  .cards-container{
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+@media screen and (max-width: 1310px) {
+
+  .p-p {
+    font-size: 0.8em;
+  }
+
+  .modules-header{
+    padding: 10px 0 0 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  .p-p {
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+
+  .p-p {
+    font-size: 0.6em;
+  }
+}
+@media screen and (max-width: 990px) {
+
+  .p-p {
+    font-size: 1em;
+  }
+  .nav-left {height: auto;}
+}
+

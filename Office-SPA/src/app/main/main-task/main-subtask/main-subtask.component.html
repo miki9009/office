@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-2 col-left" >
+    <p class=" bottom-line date-title">{{getDateString(sortedTask.taskDate)}}</p>
+    </div>
+    <div class="col-9" >
+    <div class="task-bck" *ngFor="let task of sortedTask.tasks" >
+      <p class="p-title">{{task.title}}</p>
+    <div >{{task.description}}</div>
+    </div>
+    </div>
+    <div class="col-1" >
+
+    </div>
+</div>
+

@@ -1,0 +1,26 @@
+.date-title {
+  color: rgb(192, 192, 192);
+}
+
+.bottom-line {
+  padding-bottom: 3px;
+  padding-left: 10px;
+  border-bottom: rgb(115, 189, 4) solid 4px;
+}
+
+.p-title {
+  padding: 5px;
+  margin: 0;
+  font-weight: bold;
+  border-bottom: solid 1px rgb(226, 226, 226);
+}
+
+.col-left {
+  border-right: solid 1px rgb(236, 235, 235);
+  padding: 0 !important;
+}
+
+.task-bck {
+
+  margin-bottom: 2px;
+}

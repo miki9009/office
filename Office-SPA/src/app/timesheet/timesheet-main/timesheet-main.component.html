@@ -1,0 +1,179 @@
+<div *ngIf="worker != null && user != null">
+
+<!-- <div id="animation-wrapper" class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-dark" (click)="showBar()">
+    <i class="fa fa-bars"></i>
+  </a> -->
+  <div class="row chiller-theme">
+    <div id="sidebar" class="sidebar-wrapper col-lg-2">
+      <div class="sidebar-content">
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+              alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">{{worker.name}}
+              <strong>{{worker.surname}}</strong>
+            </span>
+            <span *ngIf="user.userRole == 0" class="user-role">SysOp</span>
+            <span *ngIf="user.userRole == 1" class="user-role">Administrator</span>
+            <span *ngIf="user.userRole == 2" class="user-role">Użytkownik z rangą</span>
+            <span *ngIf="user.userRole == 3" class="user-role">Użytkownik</span>
+
+
+            <span *ngIf="worker.checkedIn" class="user-status">
+              <i class="fa fa-circle"></i>
+              <span >Pracuje</span>
+            </span>
+
+            <span *ngIf="!worker.checkedIn" class="user-status">
+              <i class="fa fa-circle" style="color: red"></i>
+              <span >Nie pracuje</span>
+            </span>
+
+          </div>
+            <h4 id="clock">{{ time }}</h4>
+
+          <button *ngIf="!worker.checkedIn" (click)="clockIn()" class="btn btn-success col-md-12 mt-2"><i class="fa fa-clock-o fa-2x float-left" style="margin-top:-3px"></i><strong>Rozpocznij</strong></button>
+          <button *ngIf="worker.checkedIn" (click)="showPopup=true" class="btn btn-danger col-md-12 mt-2"><i class="fa fa-clock-o fa-2x float-left" style="margin-top:-3px"></i><strong>Zakończ</strong></button>
+
+        </div>
+        <!-- sidebar-header  -->
+        <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>Panel</span>
+            </li>
+            <li class="sidebar-dropdown">
+              <a class="btn-link" (click)="goToPanel(0)">
+                <i class="fa fa-clock-o"></i>
+                <span>Godziny</span>
+                <!-- <span class="badge badge-pill badge-warning">New</span> -->
+              </a>
+            </li>
+            <li class="sidebar-dropdown">
+                <a (click)="goToPanel(2)">
+                  <i class="fa fa-calendar"></i>
+                  <span>Kalendarz</span>
+                </a>
+              </li>
+
+              <li *ngIf="user.userRole < 3" class="sidebar-dropdown">
+                <a (click)="goToPanel(4)">
+                  <i class="fa fa-users"></i>
+                  <span>Pracownicy</span>
+                </a>
+              </li>
+
+            <li class="sidebar-dropdown">
+              <a (click)="goToPanel(1)">
+                <i class="fa fa-tasks"></i>
+                <span>Zadania</span>
+                <!-- <span class="badge badge-pill badge-danger">3</span> -->
+              </a>
+
+            </li>
+
+            <li class="sidebar-dropdown">
+              <a (click)="goToPanel(3)">
+                <i class="fa fa-comments"></i>
+                <span>Messenger<app-inbox></app-inbox></span>
+              </a>
+            </li>
+
+            
+          </ul>
+        </div>
+        <!-- sidebar-menu  -->
+      </div>
+      <!-- sidebar-content  -->
+      <div class="sidebar-footer">
+        <a href="#">
+          <i class="fa fa-bell"></i>
+          <span class="badge badge-pill badge-warning notification">3</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-envelope"></i>
+          <span class="badge badge-pill badge-success notification">7</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span class="badge-sonar"></span>
+        </a>
+        <a href="#">
+          <i class="fa fa-power-off"></i>
+        </a>
+      </div>
+    </div>
+    <!-- sidebar-wrapper  -->
+
+    <div class="col-lg-10" style="padding: 0">
+          <app-timesheet-table *ngIf="showPanel == 0"></app-timesheet-table>
+          <app-task-table *ngIf="showPanel == 1"></app-task-table>
+          <app-calendar *ngIf="showPanel == 2"></app-calendar>
+          <app-messenger  *ngIf="showPanel == 3"></app-messenger>
+          <app-workers-list  *ngIf="showPanel == 4"></app-workers-list>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <!-- page-content" -->
+<!-- </div> -->
+<!-- page-wrapper -->
+
+<!--TIMESHEET POPUP-->
+<div class="overlay" *ngIf="showPopup">
+  <div class="popup">
+      <button type="button" class="button close-button" (click)="showPopup = false" aria-label="Close"><i class="fa fa-times fa-2x"></i>
+        </button>
+        <div class="label">
+            <h4>Wyjśćie z pracy</h4>
+        </div>
+        <br/>
+        <div class="col-md-12" >
+            <form (ngSubmit) = "clockOut(timesheet)"  class="center-block" #saveTimeRecordForm="ngForm" for >
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Opis dnia</label>
+                <textarea class="form-control" name ="notes" rows="3" [(ngModel)]="timesheet.notes"></textarea>
+              </div>
+
+                  <!--<script src="bootstrap-datepicker.pl.js" charset="UTF-8"></script>-->
+                  <!-- <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                     </div>
+                    <input name="supervisor" class="form-control" placeholder="Przełożony" type="text" [(ngModel)]="model.supervisor">
+                </div> -->
+
+
+
+                  <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn  btn-primary col-md-5" >Zatwierdź</button>
+                  </div>
+
+              </form>
+        </div>
+        <br/>
+
+  </div>
+</div>
+

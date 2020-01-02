@@ -1,0 +1,16 @@
+
+
+.right-line {
+  border-right: solid rgb(219, 222, 228) 1px;
+}
+
+
+.profile-column {
+  padding: 0 50px 0 50px;
+}
+
+.label-underscore {
+  border-bottom: 1px solid rgb(219, 222, 228);
+  border-right: 1px solid rgb(219, 222, 228);
+  background-color:rgb(249, 249, 250) ;
+}

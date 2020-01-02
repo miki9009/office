@@ -1,0 +1,50 @@
+<div *ngIf="model" class="Office-profile text-center"><h4>{{model.name}}</h4></div>
+<hr>
+<div *ngIf="model" class="row Office-profile">
+  <div class="col-md-6 pl-4 pr-4" >
+
+    <div class="row" >
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: seagreen;"><i class="fa fa-credit-card fa-lg" style="margin-left: 6px;"></i></div>Numer konta: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.bankAccount}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point"><i class="fa fa-id-card fa-lg" style="margin-left: 6px;"></i></div>NIP: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.nip}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(206, 63, 52);"><i class="fa fa-phone fa-lg" style="margin-left: 8px;"></i></div>Telefon: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.phoneNumber}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(250, 184, 60);"><i class="fa fa-mobile fa-2x" style="margin-left: 10px; margin-top: 0px;"></i></div>Komórka: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.mobile}}</div>
+    </div>
+
+  </div>
+  <div class="col-md-6 pr-4 pl-4" >
+
+    <div class="row" >
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(48, 152, 236);"><i class="fa fa-at fa-2x"  style="margin-left: 4px; margin-top: 1px;"></i></div>Email: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.email}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(145, 202, 111);"><i class="fa fa-map-marker fa-lg"></i></div>Adres: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.detailAddress}}, {{model.postCode}} {{model.city}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(228, 123, 25);"><i class="fa fa-clipboard fa-lg" style="margin-left: 7px;"></i></div>REGON: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.regon}}</div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 Office-brief-left-col"><div class="point" style="background-color: rgb(181, 59, 197);"><i class="fa fa-clipboard fa-lg" style="margin-left: 7px;"></i></div>KRS: </div>
+      <div class="col-lg-9 Office-brief-right-col">{{model.krs}}</div>
+    </div>
+
+  </div>
+</div>

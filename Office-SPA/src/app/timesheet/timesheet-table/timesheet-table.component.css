@@ -1,0 +1,112 @@
+
+.day-index{
+    color:white;
+    text-align: center;
+}
+
+.day-name{
+    text-align: center;
+    background-color: aliceblue;
+    height:40px;
+}
+
+.text-white{
+    color: white;
+}
+
+.text-centre{
+    padding-top:5px;
+    text-align: center;
+}
+
+.text-padding {
+    padding: 5px 10px;
+}
+
+.sum-hours-good{
+    background-color: rgb(188, 252, 188);
+}
+
+.sum-hours-bad{
+    background-color: rgb(253, 197, 197);
+}
+
+
+#time-table div div {
+    border-bottom: solid 1px aliceblue;
+}
+
+.td-col-50 {
+    width: 100%;
+    max-width: 50px;
+    min-width: 40px;
+}
+
+.td-col-100 {
+    width: 100%;
+    max-width: 100px;
+    min-width: 60px;
+}
+
+.td-col-150 {
+    width: 100%;
+    max-width: 150px;
+    min-width: 60px;
+}
+
+.td-col-200 {
+    width: 100%;
+    max-width: 200px;
+    min-width: 60px;
+}
+
+.td-col-1000 {
+    width: 100%;
+    max-width: 1000px;
+    min-width: 60px;
+}
+
+.tr-row {
+    display:inline-flex;
+    width: 100%;
+}
+
+.day-max {
+
+}
+
+
+@media screen and (max-width:750px) {
+
+  .text-white {
+    color: white;
+    font-size: 0.85em;
+  }
+}
+
+@media screen and (max-width:630px) {
+
+  .text-white {
+    color: white;
+    font-size: 0.7em;
+  }
+}
+
+@media screen and (max-width:570px) {
+
+  .text-white {
+    color: white;
+    font-size: 0.65em;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .day-max {
+    display: none;
+  }
+
+  .text-white {
+    color: white;
+    font-size: 0.6em;
+  }
+}

@@ -1,0 +1,5 @@
+<li *ngIf="worker!=null" [classList]='isConnected ? "messenger-contact active" : "messenger-contact in-active"' id="contact-{{worker.id}}" (click)="onClick()">
+    <div [classList]= 'isConnected ? "available-icon" : "inavailable-icon"' id="activity-icon-{{worker.id}}"></div>
+    <div class="messenger-mini-avatar"> <img src="assets/images/avatar_2x.png" width=24 height=24
+            class="avatar img-circle img-thumbnail" alt="avatar"></div>{{worker.name}} {{worker.surname}}<span *ngIf="worker.id == currentWorkerId"> &nbsp; (Ty)</span><div *ngIf="notifiactions > 0" class="contact-notification"><p>{{notifiactions}}</p></div>
+</li>

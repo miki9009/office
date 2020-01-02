@@ -1,0 +1,27 @@
+<div id="task-{{task.id}}" class="col-12 task " draggable="true" (click)="show=true">
+  <div class="task-left-line float-left" ></div>
+  <div>
+    <i *ngIf="task.priority==3; else mediumPriority" class="fa fa-exclamation-circle float-left fa-2x" style="color: red"></i>
+    <ng-template #mediumPriority>
+        <i *ngIf="task.priority==1; else lowPriority" class="fa fa-exclamation-triangle float-left fa-2x" style="color: rgb(255, 187, 0)"></i>
+    <ng-template #lowPriority> 
+        <i  class="fa fa-info-circle float-left fa-2x" style="color: rgb(44, 92, 248)"></i>
+    </ng-template>
+  
+    </ng-template>
+
+  </div>
+  <div class="task-content">
+    <h5>  {{task.title}} </h5> 
+    <p>{{task.description}}</p>
+  </div>
+  <div class="task-user-ico-container"> 
+    <div class="task-user-ico" >
+      <img src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg" width=32 height=32/>
+    </div>
+    <h6>Dodano: {{task.dateAdded | date}}</h6>
+  </div>
+
+</div>
+
+<app-task-edit *ngIf="show" [task]="task"  (onClose) = "show = false" [edit] = false >  </app-task-edit>

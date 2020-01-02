@@ -1,0 +1,67 @@
+<!--
+<div class="container mb-2">
+    <div class="row">
+        <div class="btn btn-primary">Nowe zadanie</div>
+      </div>
+</div> -->
+<div class="scrollable-content">
+<div class="task-table-content ">
+
+  <div class="row">
+    <div class="col-lg-3 task-single-column">
+        <div class="col-12 task-column-header">
+            <p>DO WYKONANIA</p>
+          </div>
+        <div id="state-0" class="col-12 task-column empty">
+            <ng-container *ngFor="let task of tasks">
+              <app-task *ngIf="task.state == 0" [task]="task" (mousedown)="selectFill('task-' + task.id)"></app-task>
+            </ng-container>
+
+          </div>
+    </div>
+
+
+    <div class="col-lg-3 task-single-column">
+        <div class="col-12 task-column-header">
+            <p>W TRAKCIE REALIZACJI</p>
+          </div>
+        <div id="state-1" class="col-12 task-column empty">
+            <ng-container *ngFor="let task of tasks">
+              <app-task *ngIf="task.state == 1" [task]="task" (mousedown)="selectFill('task-' + task.id)"></app-task>
+            </ng-container>
+
+          </div>
+    </div>
+
+<div class="div col-lg-3 task-single-column">
+    <div class="col-12 task-column-header">
+        <p>OCZEKUJĄCE</p>
+      </div>
+    <div id="state-2" class="col-12 task-column empty">
+        <ng-container *ngFor="let task of tasks">
+          <app-task *ngIf="task.state == 2" [task]="task" (mousedown)="selectFill('task-' + task.id)"></app-task>
+        </ng-container>
+
+      </div>
+</div>
+
+<div class="col-lg-3 task-single-column">
+    <div class="col-12 task-column-header">
+        <p>ZAKOŃCZONE</p>
+      </div>
+    <div id="state-3" class="col-12 task-column empty">
+        <ng-container *ngFor="let task of tasks">
+          <app-task *ngIf="task.state == 3" [task]="task" (mousedown)="selectFill('task-' + task.id)"></app-task>
+        </ng-container>
+
+      </div>
+</div>
+
+
+    <!-- <div id="state-1"  class="col-3 task-column empty"></div>
+          <div id="state-2"  class="col-3 task-column empty"></div>
+          <div id="state-3"  class="col-3 task-column empty"></div> -->
+  </div>
+
+</div>
+</div>

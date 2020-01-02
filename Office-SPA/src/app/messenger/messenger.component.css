@@ -1,0 +1,201 @@
+.messenger-content{
+    margin: 0 !important;
+    padding: 0 !important;
+    height: calc(100vh - 100px);
+}
+.members-list{
+    background-color: #2C3E50;
+    border-left: 1px solid rgb(95, 132, 170);
+    padding: 0 0 0 0 !important;
+    margin: 0 !important;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: calc(100vh - 100px);
+}
+
+.members-list ul {
+    padding: 0 !important;
+    margin: 0 !important
+}
+
+.members-list-parent {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.members-list-title {
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    border-bottom: solid 1px rgb(95, 132, 170);
+    padding: 10px;
+}
+
+.conversation-content {
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+.messages-input {
+    height: 50px;
+    padding: 0 !important;
+    margin: 0 0 15px 0 !important;
+}
+
+.messages-container {
+    height: calc(100% - 120px);
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+}
+
+.messages-options {
+    border: solid 1px rgb(146, 146, 146);
+    padding: 0;
+    margin: 0;
+}
+
+.messages-input-val {
+    border: solid 1px rgb(146, 146, 146);
+    padding: 0;
+    margin: 0;
+}
+
+.messenger-contact-info {
+    padding: 15px 10px 10px 10px;
+    border-bottom: solid 1px rgb(146, 146, 146);
+    margin-bottom: 15px;
+}
+
+.messenger-contact-info h4 {
+    font-size: 1.4em;
+    color: rgb(49, 49, 49);
+}
+
+.available-icon {
+  margin: 6px 8px 8px 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: rgb(111, 197, 85);
+}
+
+.inavailable-icon {
+  margin: 8px 8px 8px 0;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 4px;
+  border: solid 1px rgb(146, 146, 146);
+}
+
+.message {
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+}
+
+.message p {
+  padding: 0;
+  margin: 0;
+
+}
+
+.message-sender {
+    background-color: rgb(49, 137, 209);
+    color: white;
+    float: right;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.message-reciever {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: rgb(238, 238, 238);
+    float: left;
+    color: rgb(58, 58, 58);
+}
+
+.message-row {
+    clear: both;
+}
+
+.message-date {
+  font-size: 0.8em;
+  padding: 0 0 0 0;
+  margin: 0;
+  visibility: hidden;
+}
+
+.you-span {
+  font-size: 1.4em;
+}
+
+.container-invisible {
+  visibility: hidden;
+}
+
+.emoticons-button {
+  cursor: default;
+
+}
+
+.emoticons-button:hover {
+  cursor: pointer;
+  background-color: #c4cdcf;
+}
+
+.emoticons-list {
+  padding: 5px 5px 5px 0px;
+  position: absolute;
+  width: 310px;
+  height: 345px;
+  bottom: 50px;
+  left: 0px;
+  display: block;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 100;
+  border: solid 1px rgb(201, 201, 201);
+  background-color: white;
+}
+
+.emoticons-list .row {
+  padding: 0;
+  margin: 0;
+}
+
+.emoticons-list div {
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.emoticons-list div div:hover {
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width:500px) {
+  .day-max {
+    display: none;
+  }
+
+  #message-button {
+    width: 100px !important;
+  }
+
+}
+
+@media screen and (max-width:992px) {
+  .conversation-content {
+
+    margin: 0px 0px 30px 0px !important;
+}
+}
+

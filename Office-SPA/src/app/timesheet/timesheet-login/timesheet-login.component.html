@@ -1,0 +1,92 @@
+<div class="overlay">
+
+
+<div class="popup popup-worker-login"> 
+    <button type="button" class="button close-button"  aria-label="Close"><i class="fa fa-times fa-2x"  routerLink=""></i>
+    </button>
+    <h4 class="label">
+        Logowanie Pracownika
+      </h4>   
+  <hr/>   
+    <div id="loginbox" class=" col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">   
+              
+        <div class="panel panel-info" >
+
+                <div class="panel-heading">
+                    <div style="float:right; font-size: 80%; position: relative; top:-10px"><a style="color: #2C3E50">Nie pamiętasz hasła?</a></div>
+                </div>     
+
+                <div class="panel-body" >
+
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                        
+                    <form id="loginform" #loginForm="ngForm" (ngSubmit)="login()" class="form-horizontal" role="form">
+                                
+                        <div class="input-group pt-3">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Login lub Email" [(ngModel)] = "model.username">                                        
+                                </div>
+                            
+                        <div class="input-group py-3">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input id="login-password" type="password" class="form-control" name="password" placeholder="Hasło" autocomplete="password" [(ngModel)] = "model.password">
+                                </div>
+                                
+
+                            
+                        <div class="input-group">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input id="login-remember" type="checkbox" name="remember" value="1"> Pamiętaj mnie
+                                    </label>
+                                  </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-4" >
+                                <div class=" controls">
+                                  <button id="btn-login" type="submit" class="btn btn-primary px-5 py-2">Zaloguj  </button>
+                                </div>     
+                            </div>
+
+                            <!-- <div class="row" >
+                                <div class="form-row" >
+                                    <div class="controls" style="margin-left: 60px;">
+                                      <div (click)="clockIn()" id="btn-work-login"  class="button-worker-login login-color-in">   
+                                        <i class="fa fa-clock-o fa-2x"></i>
+                                        <p><strong>Rozpocznij</strong></p>
+                                      </div>
+                                    </div>     
+                                    <div class="controls">
+                                        <div  (click)="clockIn()" id="button-work-logout"  class="button-worker-login login-color-out">   
+                                            <i class="fa fa-clock-o fa-2x"></i>
+                                            <p><strong>Zakończ</strong></p>
+                                          </div>
+                                      </div>     
+                                </div>
+                            </div> -->
+                        </div>
+
+
+
+                            <hr/>
+                            <!-- <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                        Don't have an account! 
+                                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                        Sign Up Here
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>     -->
+                        </form>     
+
+
+
+                    </div>                     
+                </div>  
+    </div>
+
+</div>
+</div>

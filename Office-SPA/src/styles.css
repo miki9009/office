@@ -1,0 +1,256 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootswatch/dist/Flatly/bootstrap.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import '../src/app/datepicker/datepicker.css';
+/*
+    Styles for tabs
+*/
+
+*:focus {
+  outline: none !important;
+  border: 0 !important;
+}
+
+p, h6, h5, h4, h3, h2, h1, li, div, a {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.html {
+  background-color: #2C3E50;
+}
+
+.tab-panel {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .nav-tabs > li.open, .member-tabset > .nav-tabs > li:hover {
+    border-bottom: 4px solid #fbcdcf;
+  }
+
+  .member-tabset > .nav-tabs > li.open > a, .member-tabset > .nav-tabs > li:hover > a {
+    border: 0;
+    background: none !important;
+    color: #333333;
+  }
+
+  .member-tabset > .nav-tabs > li.open > a > i, .member-tabset > .nav-tabs > li:hover > a > i {
+    color: #a6a6a6;
+  }
+
+  .member-tabset > .nav-tabs > li.open .dropdown-menu, .member-tabset > .nav-tabs > li:hover .dropdown-menu {
+    margin-top: 0px;
+  }
+
+  .member-tabset > .nav-tabs > li.active {
+    border-bottom: 4px solid #E95420;
+    position: relative;
+  }
+
+  .member-tabset > .nav-tabs > li.active > a {
+    border: 0 !important;
+    color: #333333;
+  }
+
+  .member-tabset > .nav-tabs > li.active > a > i {
+    color: #404040;
+  }
+
+  .member-tabset > .tab-content {
+    margin-top: -3px;
+    background-color: #fff;
+    border: 0;
+    border-top: 1px solid #eee;
+    padding: 15px 0;
+  }
+
+  .bs-datepicker-head{
+    background-color: #2C3E50 !important;
+}
+
+.ng-star-inserted .selected {
+  background-color: #2C3E50 !important;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 999;
+  cursor: pointer;
+}
+
+.overlay-deep {
+  z-index: 9999;
+}
+
+.popup {
+    background-color: white;
+    width: 500px;
+    height: auto;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 5px;
+    border: solid 5px rgb(224, 224, 224);
+    animation-name: slide;
+    animation-duration: 0.3s;
+    animation-fill-mode: backwards;
+}
+
+.close-button{
+  float: right;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(209, 42, 30, 0);
+  border-color: rgb(209, 42, 30, 0);
+  color: white;
+}
+
+.close-button:hover {
+  color: #a6a6a6;
+}
+
+
+.label{
+  background-color: #2C3E50;
+  padding: 10px 10px 10px 10px;
+  color: white;
+  text-align: center;
+  font: 900;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+.form-label-center{
+  width: 100%;
+  text-align: center;
+  font: bolder;
+  font-size: 125%;
+}
+
+.submit-center{
+  align-content: center;
+}
+
+.background-primary{
+  background-color: #2C3E50 !important;
+
+}
+
+
+@-webkit-keyframes slide {
+  0%   { transform: translate(0px,-1000px); }
+  100% { transform: translate(0px,0px); }
+}
+@-moz-keyframes slide {
+  0%   { transform: translate(0px,-1000px); }
+  100% { transform: translate(0px,0px); }
+}
+@-o-keyframes slide {
+  0%   { transform: translate(0px,-1000px); }
+  100% { transform: translate(0px,0px); }
+}
+@keyframes slide {
+  0%   { transform: translate(0px,-1000px); }
+  100% { transform: translate(0px,0px); }
+}
+
+
+
+.page-container{
+  position: absolute;
+  left: 0;
+  right:0;
+  top:75;
+}
+
+table{
+  transform:scale(0.8); -webkit-transform:scale(0.9);
+-moz-transform:scale(0.8); -o-transform:scale(0.9);
+}
+
+
+.edit:hover{
+  cursor: pointer;
+}
+
+.field-validation{
+  color: #E95420;
+  font-size: 80%;
+  width: 100%;
+  font-style: italic;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.scrollable-content {
+  overflow: auto;
+  height: calc(100vh - 80px);
+}
+
+.time-table {
+  background-color: white;
+  padding: 5px 15px 0px 15px !important;
+  margin-bottom: 0;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  -moz-box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  box-shadow: 0px 4px 6px 0px rgba(209,205,209,1);
+  border: 1px solid rgba(26, 54, 126, 0.125);
+
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(204, 204, 204);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(146, 146, 146);
+}
+
+
+
+/*end spinner */
+@media screen and (max-width:500px) {
+  .popup {
+    background-color: white;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+
+}
+
+@media screen and (max-height:720px) {
+  .popup {
+    max-height: 500px !important;
+    overflow-y: auto;
+}
+}

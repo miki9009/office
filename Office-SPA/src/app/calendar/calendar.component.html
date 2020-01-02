@@ -1,0 +1,64 @@
+<div class="calendar-content scrollable-content" *ngIf="refresh > 0" >
+    <div class="row" style="background-color: #2C3E50;">
+        <div class="col-2">
+          <!-- <a class="btn btn-primary mb-2 text-light" (click)="addDay()">Oznacz dni</a> -->
+          
+          <div *ngIf="daysToAdd.length == 0" class="dropdown">
+              <button class="btn btn-md btn-primary mb-2 pl-5 pr-5 action-button-disabled">Oznacz dni</button>
+
+            </div>
+
+          <div  *ngIf="daysToAdd.length > 0" class="dropdown">
+              <button class="dropbtn btn btn-md btn-primary mb-2 pl-5 pr-5 action-button">Oznacz dni</button>
+              <div class="dropdown-content">
+              <a (click)="addDay(1)" >Praca w firmie</a>
+              <a (click)="addDay(2)" >Praca poza firmą</a>
+              <a (click)="addDay(3)" >Wyjazd słuzbowy</a>
+              <a (click)="addDay(4)" >Urlop</a>
+              <a (click)="addDay(6)" >Choroba</a>
+              <a (click)="addDay(7)" >Urlop na ządanie</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-10">
+          <ul class="legend">
+            <li><div class="day-work" ></div>Praca w firmie</li>
+            <li><div class="day-work-remote" ></div>Praca poza firmą</li>
+            <li><div class="day-work-bussiness-trip" ></div>Wyjazd słuzbowy</li>
+            <li><div class="day-work-off-waiting" ></div>Urlop oczekujący na zatwierdzenie</li>
+            <li><div class="day-work-off" ></div>Urlop</li>
+            <li><div class="day-work-sick" ></div>Choroba</li>
+            <li><div class="day-work-off-demand" ></div>Urlop na żądanie</li>
+          </ul>
+        </div>
+      </div>
+
+    <div class="month">      
+        <ul>
+          <li class="prev" (click)="monthPrevious()">&#10094;</li>
+          <li class="next" (click)="monthNext()">&#10095;</li>
+          <li>
+            {{months[monthDisplay]}}<br>
+            <span style="font-size:18px">{{yearDisplay}}</span>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="weekdays">
+        <li>Pn</li>
+        <li>Wt</li>
+        <li>Śr</li>
+        <li>Czw</li>
+        <li>Pt</li>
+        <li>Sob</li>
+        <li>Nd</li>
+      </ul>
+      
+      <ul class="days">
+        <ng-container *ngFor="let day of days;  let i = index" >
+            <li *ngIf="today != day" [attr.data-index]="i" [attr.id] = "(day == -1 ? '' : 'd'+day)" class="{{ 
+              (day != -1 ? (i == 6 || i == 13 || i == 20 || i == 27 || i == 34 ? 'sunday' : 'day-cell') : 'inactive')}}" (click) = "select('d'+day)" >{{day}}</li>  
+              <li *ngIf="today == day" [attr.data-index]="i" [attr.id] = "(day == -1 ? '' : 'd'+day)" class="day-cell" (click) = "select('d'+day)" ><span class="today">{{day}}</span></li>  
+        </ng-container>
+      </ul>
+</div>

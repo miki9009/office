@@ -1,0 +1,41 @@
+<div *ngIf="show" class="overlay" >
+  <div class="popup">
+      <button type="button" (click)="changeShowToFalse()" class="button close-button" aria-label="Close"><i class="fa fa-times fa-2x"></i>
+      </button>
+      <div class="label">
+          <h4>{{title}}</h4>
+      </div>
+      <div class="col-md-12" >
+        <div class="col-md-12">
+        <br/>
+          <p class="text-justify text-center">{{message}}</p>
+        </div>
+
+
+        <div class="row" >
+<div style="margin: auto">
+
+  <!-- <div class="row">
+      <div class="col-md-5">
+            
+          <button type="button" (click)="okPressed()" class="btn btn-primary " style="width: 250%">Tak</button>
+      </div>
+      <div class="col-md-5">
+  
+          <button type="button" (click)="cancelPressed()" class="btn btn-primary" style="width: 250%">Nie</button>
+      </div>
+  </div> -->
+
+  <div class="modal-footer ">
+    <button type="button" (click)="okPressed()" class="btn btn-primary font-weight-bold" style="width: 150px" >Tak</button>
+    <button type="button" (click)="cancelPressed()" class="btn btn-success font-weight-bold" style="width: 150px">Nie</button>
+  </div>
+
+</div>
+
+        </div>
+
+        </div>
+  </div>
+  
+</div>

@@ -1,0 +1,242 @@
+<div class="jumbotron time-table box-shadow">
+  <div class="row">
+    <div class="col d-flex justify-content-start">
+      <h4 id="month-label">Wrzesień 2019</h4>
+    </div>
+    <div class="col d-flex justify-content-end">
+      <div class="mode-list-title" (click)="clickList('mode-list')">
+        <p *ngIf="view === 0">
+          Dzień<span><i class="fa fa-list"></i></span>
+        </p>
+        <p *ngIf="view === 1">
+          Miesiąc<span><i class="fa fa-list"></i></span>
+        </p>
+        <div id="mode-list" class="dropdown-menu" style="right: 0; left: auto;">
+          <div class="dropdown-item" (click)="changeView(0)">Dzień</div>
+          <div class="dropdown-item" (click)="changeView(1)">Miesiąc</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="view === 0">
+    <div class="row" style="border-bottom: lightgray solid 1px;">
+      <div class="col d-flex justify-content-center">
+        <div class="arrow" (click)="dayPrevious()">
+          <i class="fa fa-angle-left fa-3x"></i>
+        </div>
+        <div class="day-block">
+          <h5 id="day-label"></h5>
+        </div>
+        <div class="arrow" (click)="dayNext()">
+          <i class="fa fa-angle-right fa-3x" style="margin-left: 15px"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="scrollable-timetable-day">
+      <div class="row" *ngFor="let item of hours; let i = index" style="overflow-y: auto;" (click)="createNewTask(yearDisplay, (monthDisplay+1), currentDayIndex, i)">
+        <div class="hour-left">
+          <p>{{ i }}:00</p>
+        </div>
+        <div class="hour" id="hour-{{(i < 10 ? '0'+i : i)}}">
+          <div class="hour-right"><span><i class="fa fa-plus"></i></span></div>
+        </div>
+
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="view === 1">
+    <div style="height: 35px; margin-top: 5px">
+      <div class="arrow" style="float: left" (click)="monthPrevious()">
+        <i class="fa fa-angle-left fa-3x"></i>
+      </div>
+      <div class="arrow" style="float: right" (click)="monthNext()">
+        <i class="fa fa-angle-right fa-3x" style="margin-left: 15px"></i>
+      </div>
+    </div>
+
+    <div class="month-line"></div>
+    <div class="row">
+      <div class="month-header">
+        <div class="week-day text-center">
+          <p class="month-label">Poniedziałek</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Wtorek</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Środa</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Czwartek</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Piątek</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Sobota</p>
+        </div>
+        <div class="week-day text-center">
+          <p class="month-label">Niedziela</p>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="row" *ngFor="let item of monthsLength; let i = index">
+      <ng-container *ngFor="let item of daysLength; let j = index">
+        <div *ngIf="days[i * 7 + j] > -1; else dayDisabled" id="day-cell-{{ days[i * 7 + j] }}" (click)="createNewTask(yearDisplay, (monthDisplay+1), days[i * 7 + j])" (mouseenter)="showOpenDayButton('day-cell-' + days[i * 7 + j] + '-open')" (mouseleave)="hideOpenDayButton()"  class="month-day">
+          <p>{{ days[i * 7 + j] }}</p>
+          <div id="day-cell-{{ days[i * 7 + j] }}-open" class="day-open" (click)="openDay(days[i * 7 + j])"><span><i class="fa fa-edit"></i></span></div>
+          <div class="day-record-bck"  id="day-cell-inner-{{ days[i * 7 + j] }}" >
+            <!-- <div class="day-add-month" ><span><i class="fa fa-plus"></i></span></div> -->
+          </div>
+        </div>
+        <ng-template #dayDisabled>
+          <div class="month-day month-day-disabled"></div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<!-- POPUP Add-->
+<div *ngIf="showPopup" class="overlay" >
+    <div class="popup">
+        <button type="button" class="button close-button" aria-label="Close" (click)="setPopup(false)"><i
+                class="fa fa-times fa-2x"></i>
+        </button>
+        <div class="label">
+            <h4>{{editMode ? 'Edycja wydarzenia' : 'Nowe wydarzenie'}}</h4>
+        </div>
+        <br />
+        <div class="col-md-12">
+
+            <form  class="center-block"  #saveTimeTableRecordForm="ngForm">
+                <!--TASK NAME-->
+                <div class="form-group">
+                    <label>Nazwa Wydarzenia</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                        </div>
+                        <input name="title" class="form-control" placeholder="Nazwa Wydarzenie" type="text" [(ngModel)]="model.title">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputState">Powtarzaj</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-align-justify"></i> </span>
+                    </div>
+                  <select id="inputState" name="repeating" class="form-control" [selectedIndex]="0"  [(ngModel)]="model.repeating" >
+                    <option value="0" >Nie powtarzaj</option>
+                    <option value="1" >Codziennie</option>
+                    <option value="2" >W dni powszednie </option>
+                    <option value="3" >Co tydzień</option>
+                    <option value="4" >Co miesiąc</option>
+                  </select>
+                </div>
+              </div>
+
+              <ng-container  *ngIf="model.repeating == 0">
+                <div class="form-group">
+                  <label>Dzień</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                      </div>
+                      <input name="deadline" id="date-picker-date" type="text" placeholder="{{Today}}" value="{{Today}}" class="form-control"
+                       bsDatepicker>
+                  </div>
+              </div>
+
+              </ng-container>
+
+              <div class="form-row">
+                <div *ngIf="model.repeating == 3" class="form-group col-md-6">
+                  <label for="inputEmail4">Dzień</label>
+                  <select  name="select-day" class="form-control" [selectedIndex]="0"  [(ngModel)]="repetitionModel.day" >
+                    <option value="0" selected>Poniedziałek</option>
+                    <option value="1" >Wtorek</option>
+                    <option value="2" >Środa</option>
+                    <option value="3" >Czwartek</option>
+                    <option value="4" >Piątek</option>
+                    <option value="5" >Sobota</option>
+                    <option value="6" >Niedziela</option>
+                  </select>
+                </div>
+              </div>
+
+              <ng-container *ngIf="model.repeating == 4">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4">Dzień</label>
+                    <select  name="select-day" class="form-control" [selectedIndex]="0"  [(ngModel)]="repetitionModel.day" >
+                      <option value="0" selected>Poniedziałek</option>
+                      <option value="1" >Wtorek</option>
+                      <option value="2" >Środa</option>
+                      <option value="3" >Czwartek</option>
+                      <option value="4" >Piątek</option>
+                      <option value="5" >Sobota</option>
+                      <option value="6" >Niedziela</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputPassword4">Tydzień</label>
+                    <select  name="select-week" class="form-control" [selectedIndex]="0"  [(ngModel)]="repetitionModel.weekIndex" >
+                      <option value="0" selected>Pierwszy</option>
+                      <option value="1" >Drugi</option>
+                      <option value="2" >Trzeci</option>
+                      <option value="3" >Czwarty</option>
+                      <option value="4" >Ostatni</option>
+                    </select>
+                  </div>
+                </div>
+              </ng-container>
+
+
+                <div class="form-group">
+                    <label>Godzina</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-clock-o"></i> </span>
+                        </div>
+                        <input name="time" class="form-control" placeholder="{{Time}}" value="{{Time}}"
+                            type="time"  required [(ngModel)]="model.time">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="inputWorker">Przypisz osobę</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-align-justify"></i> </span>
+                    </div>
+                  <select id="inputWorker" name="workers-field" class="form-control"  [(ngModel)]="model.usersAttached" >
+                    <option *ngFor="let item of workers; let i = index"  >{{workers[i]}}</option>
+                  </select>
+                </div>
+              </div>
+
+                <!--TASK DESCRIPTION-->
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Opis zadania</label>
+                    <textarea class="form-control" name="notes" placeholder="Opis..." rows="3"  [(ngModel)]="model.description"></textarea>
+                </div>
+                <div *ngIf="!editMode" class="d-flex justify-content-center">
+                  <button type="button" (click)="addTask()"  class="btn  btn-primary col-md-5">Stwórz</button>
+                </div>
+
+                <div *ngIf="editMode" class="d-flex justify-content-center">
+                  <button type="button"  class="btn  btn-primary col-md-5 mr-4" (click)="saveTask()" >Zapisz zmiany</button>
+                  <button type="button"  class="btn  btn-danger col-md-5 ml-4" (click)="deleteTask(model.id)" >Usuń</button>
+                </div>
+
+            </form>
+        </div>
+        <br />
+    </div>
+</div>

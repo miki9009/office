@@ -1,0 +1,52 @@
+<form #registerForm="ngForm" (ngSubmit)="register()" >
+  <h2 class="text-center text-primary">Rejestracja</h2>
+  <hr>
+
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+   </div>
+      <input class="form-control"  placeholder="Adres email" type="email" name="model.email" [(ngModel)]="model.email" autocomplete="off" required>
+      <div *ngIf="validation.email(model.email)" class="field-validation">
+        <div>Należy podać prawidłową formę maila np. jan@mail.com</div>
+      </div>
+  </div> <!-- form-group// -->
+
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+   </div>
+      <input  class="form-control" required name="username" [(ngModel)]="model.username" autocomplete="off" placeholder="Nazwa użytkownika">
+      <div *ngIf="validation.minLength(model.username, 6)" class="field-validation">
+        <div>Nazwa użytkownika musi składać się z conajmniej 6 znaków</div>
+      </div>
+    </div> <!-- form-group// -->
+
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+  </div>
+      <input id="password" type="password" class="form-control" required name="password" placeholder="Hasło" autocomplete="off" [(ngModel)]="comparePassword">
+      <div *ngIf="validation.minLength(comparePassword, 8)" class="field-validation">
+        <div>Hasło musi składać się z conajmniej 8 znaków</div>
+      </div>
+  </div> <!-- form-group// -->
+  <div class="form-group input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+  </div>
+      <input id="password-compare" type="password" class="form-control" required name="repeat-password" [(ngModel)]="model.password" autocomplete="off" placeholder="Powtórz Hasło">
+      <div *ngIf="validation.compareField('password', 'password-compare')" class="field-validation">
+        <div>Hasła róznią się.</div>
+      </div>
+  </div> <!-- form-group// -->                                      
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block"> Stwórz konto  </button>
+  </div> <!-- form-group// -->                                                 
+
+
+  <div class="form-group text-center">
+    <button class="btn btn-default" type="button" (click)="cancel()" >Anuluj</button>
+  </div>
+  
+

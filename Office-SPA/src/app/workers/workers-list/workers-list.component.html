@@ -1,0 +1,224 @@
+<div class="row">
+    <div class="col card box-shadow">
+<div>
+
+    <div class="scrollable-content" *ngIf="createNewWorker">
+      <div class="popup">
+          <button type="button" class="button close-button" (click)="showCreatePopup()" aria-label="Close"><i class="fa fa-times fa-2x"></i>
+            </button>
+            <div class="label">
+                <h4>Nowy pracownik</h4>
+            </div>
+            <br/>
+            <div class="col-md-12" >
+                <form  class="center-block" #createWorkerForm="ngForm" (ngSubmit)="createWorker()">
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input name="surname" class="form-control" placeholder="Nazwisko"  type="text" [(ngModel)]="model.surname" required>
+                          <div *ngIf="validation.minLength(model.surname, 2)" class="field-validation">
+                            <div>Nazwisko musi składać się z conajmniej 2 liter</div>
+                          </div>
+                      </div> <!-- form-group// -->
+
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input name="name" class="form-control" placeholder="Imię" type="text" [(ngModel)]="model.name" required>
+                          <div *ngIf="validation.minLength(model.name, 2)" class="field-validation">
+                            <div>Imię musi składać się z conajmniej 2 liter</div>
+                          </div>
+                        </div> <!-- form-group// -->
+
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input name="username" class="form-control" placeholder="Login" type="text" [(ngModel)]="model.username" required>
+                          <div *ngIf="validation.minLength(model.username, 6)" class="field-validation">
+                            <div>Login musi składać się z conajmniej 6 liter</div>
+                          </div>
+                        </div>
+
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input name="email" class="form-control" placeholder="Email" type="text" [(ngModel)]="model.email" required>
+                          <div *ngIf="validation.email(model.email)" class="field-validation">
+                            <div>Należy podać prawidłową formę maila np. jan@mail.com</div>
+                          </div>
+                        </div>
+
+
+                      <!--<script src="bootstrap-datepicker.pl.js" charset="UTF-8"></script>-->
+                      <!-- <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                         </div>
+                        <input name="supervisor" class="form-control" placeholder="Przełożony" type="text" [(ngModel)]="model.supervisor">
+                    </div> -->
+
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                       </div>
+                      <select name="supervisor" class="form-control" placeholder="Przełożony" type="text" [(ngModel)]="model.supervisor">
+                        <option   *ngFor="let worker of workers">{{worker.surname + ' ' + worker.name }}</option>
+
+                      </select>
+                  </div> <!-- form-group// -->
+
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input id="password-compare"  name="password" class="form-control" placeholder="Hasło" type="password" [(ngModel)]="comparePassword">
+                          <div *ngIf="validation.minLength(comparePassword, 8)" class="field-validation">
+                            <div>Hasło musi składać się z conajmniej 8 znaków</div>
+                          </div>
+                        </div>
+
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                           </div>
+                          <input id="password" name="repear-password" class="form-control" placeholder="Powtórz Hasło" type="password"  [(ngModel)]="model.password">
+                          <div *ngIf="validation.compareField('password', 'password-compare')" class="field-validation">
+                            <div>Hasła róznią się.</div>
+                          </div>
+                        </div>
+
+                      <div class="d-flex justify-content-center">
+                          <button type="submit" class="btn btn-primary col-md-5">Dodaj</button>
+                      </div>
+
+                  </form>
+            </div>
+            <br/>
+
+      </div>
+    </div>
+
+  <br/>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+              <div class="d-inline">
+                  <button (click)="showCreatePopup()" class="btn btn-primary ml-1 mr-1 p-3">Dodaj pracownika</button>
+              </div>
+                <nav class="navbar navbar-light bg-light float-right">
+                    <form class="form-inline ">
+                      <input class="form-control mr-sm-2" type="search" placeholder="szukaj" aria-label="Search">
+                      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><i class="fa fa-search"></i> Szukaj </button>
+                    </form>
+                  </nav>
+
+
+<table id="datatable" class="table table-bordered" cellspacing="0" width="100%">
+    				<thead>
+						<tr>
+              <th scope="col">#</th>
+              <th>Nazwisko</th>
+							<th>Imię&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th>Przełożony</th>
+							<th class="icon-cell-text">W pracy</th>
+              <th class="icon-cell-text">Konto</th>
+              <th class="icon-cell-text">Zadania</th>
+              <th class="icon-cell-text" >Usuń  </th>
+						</tr>
+          </thead>
+
+					<tbody *ngFor="let worker of workers;  let i = index" [attr.data-index]="i">
+
+						<tr [style.background-color]="i%2==0 ? '#ecf0f1' : 'white'">
+              <td scope="col">{{i+1}}</td>
+							<td style="font-size: 130%"><strong>{{worker.surname}}</strong></td>
+							<td>{{worker.name}}</td>
+              <td><em>{{ worker.supervisor }}</em></td>
+
+              <td>
+                <button *ngIf="worker.checkedIn" class="btn btn-link icon-color-theme"><i class="fa fa-clock-o fa-2x" ></i></button>
+                <button *ngIf="!worker.checkedIn" class="btn btn-link icon-color-red" ><i class="fa fa-ban fa-2x" ></i></button>
+              </td>
+
+              <td><button (click)="editProfile(worker.userID)" class="btn btn-primary icon-color-light" ><i class="fa fa-user-circle fa-2x" ></i></button></td>
+              <td><button (click)="openTaskPopup(worker.id)"  class="btn btn-primary icon-color-light" ><i class="fa fa-edit fa-2x" ></i></button></td>
+              <td><button (click)="showDeletePopup(worker.id)" class="btn btn-danger icon-color-light "><i class="fa fa-trash fa-2x" ></i></button></td>
+            </tr>
+
+					</tbody>
+				</table>
+
+
+	</div>
+	</div>
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Edytuj</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+        <input class="form-control " type="text" placeholder="Tiger Nixon">
+        </div>
+        <div class="form-group">
+
+        <input class="form-control " type="text" placeholder="System Architect">
+        </div>
+        <div class="form-group">
+
+
+      <input class="form-control " type="text" placeholder="Edinburgh">
+
+        </div>
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Uaktualnij</button>
+      </div>
+        </div>
+    <!-- /.modal-content -->
+  </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+      <app-popup (showChanged) = "delete = false" (okPress)="deleteWorkerCurrent()" [title]="'Uwaga'" [message]="'Czy na pewno chcesz usunąć pracownika?'"  [show]="delete" ></app-popup>
+
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="edit">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" >×</button>
+        <h4 class="modal-title custom_align" id="Heading">Usunąć</h4>
+      </div>
+          <div class="modal-body">
+
+       <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Czy na pewno chcesz usunąć?</div>
+
+      </div>
+        <div class="modal-footer ">
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        </div>
+      </div>
+    <!-- /.modal-content -->
+  </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <!-- <div *ngIf="userRoleValue == 3">
+      <app-timesheet-main></app-timesheet-main>
+    </div> -->
+<app-task-edit *ngIf="showTask" [workerID]="workerIndex" (onClose)= "closeTaskPopup()"  [edit] = "true" ></app-task-edit>
+</div>
+</div>

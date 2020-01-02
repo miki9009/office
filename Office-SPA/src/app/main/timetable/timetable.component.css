@@ -1,0 +1,279 @@
+@import '../main.component.css';
+.time-table {
+  background-color: white;
+  padding: 5px 15px 0px 15px !important;
+  margin-bottom: 0;
+}
+
+.hour {
+  border-bottom: lightgray solid 1px;
+  min-height: 40px;
+  text-align: center;
+  min-width: 100px;
+  width: calc(100% - 50px);
+}
+
+.hour:hover {
+  background-color: aliceblue;
+}
+
+.hour-left {
+  border-right:  lightgray solid 1px;
+
+  border-bottom:   lightgray solid 1px;
+  text-shadow: -1px -1px 0  rgb(106, 151, 197), 1px -1px 0  rgb(106, 151, 197), -1px 1px 0  rgb(106, 151, 197), 1px 1px 0  rgb(106, 151, 197);
+  background-color: rgb(141, 182, 223);
+  width: 50px;
+}
+
+.hour-left p {
+  padding-top:10px;
+  color: white;
+  text-align: center;
+}
+
+.hour-right {
+  margin: 15px;
+  background-color: rgb(141, 182, 223);
+  width: 30px;
+  height: 30px;
+  float: right;
+  text-align: center;
+  color: white;
+  font-size: 1.4em;
+  border-radius: 15px;
+}
+
+.hour-right:hover {
+  background-color: rgb(46, 121, 196);
+  cursor: pointer;
+}
+
+.day-block {
+  width: 150px;
+  min-height: 40px;
+  text-align: center;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  color: #2C3E50;
+}
+
+.arrow:hover {
+  border-radius: 40px;
+  background-color: rgb(245, 244, 244);
+  cursor: pointer;
+}
+
+.arrow i {
+  margin-left: 10px;
+  margin-top: -5px;
+}
+
+.mode-list-title {
+  padding: 5px 10px 5px 10px;
+  border: solid 1px lightgray;
+  height: 35px;
+  width: 150px;
+  border-radius: 5px;
+}
+
+.mode-list-title:hover {
+  cursor: pointer;
+  background-color: rgb(245, 244, 244);
+}
+
+.mode-list-title i {
+  padding-top: 5px;
+  float: right;
+}
+
+.week {
+  display: inline-flex;
+  width: calc(100% - 50px);
+  border-bottom: lightgray solid 1px;
+  min-height: 40px;
+}
+
+.week-day {
+  border-right: lightgray solid 1px;
+  min-height: 40px;
+  width: calc(100%/7);
+}
+
+.week-day p {
+  margin: 0;
+  padding: 0;
+}
+
+.week-day h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+
+.scrollable-timetable-day {
+  overflow-y: auto;
+  overflow-x:hidden;
+  height: calc(100vh - 180px);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left:15px;
+  padding-right:5px
+}
+
+.scrollable-timetable-week {
+  overflow-y: auto;
+  overflow-x:hidden;
+  height: calc(100vh - 215px);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left:15px;
+  padding-right:5px
+}
+
+.month-day {
+  height: calc((100vh - 215px)/6);
+  width: calc(100%/7);
+  border-bottom: lightgray solid 1px;
+  border-right: lightgray solid 1px;
+  overflow: hidden;
+  font-size: 0.8em;
+}
+
+.month-day:hover {
+  background-color: aliceblue !important;
+  background: aliceblue;
+  overflow: visible;
+  z-index: 10;
+}
+
+.month-line {
+  border-bottom: lightgray solid 1px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-top: 10px;
+}
+
+.month-header {
+  display: inline-flex;
+  width: 100%;
+  border-bottom: lightgray solid 1px;
+  min-height: 40px;
+  color: white;
+  background-color: #2C3E50;
+}
+
+.month-label {
+  margin-top: 10px !important;
+  font-weight: bold;
+}
+
+.month-day-disabled {
+  background-color: rgb(245, 244, 244);
+}
+
+.month-day-disabled:hover {
+  background-color: rgb(245, 244, 244) !important;
+  cursor: default;
+}
+
+.month-day p {
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 0px;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.month-today p{
+  text-shadow: -1px -1px 0  rgb(106, 151, 197), 1px -1px 0  rgb(106, 151, 197), -1px 1px 0  rgb(106, 151, 197), 1px 1px 0  rgb(106, 151, 197);
+  background-color: rgb(161, 197, 233);
+  color: white;
+}
+
+.day-record {
+  text-align: left;
+  background-color: inherit;
+  width: 100%;
+  overflow: hidden;
+  height: 18px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+.day-record:hover {
+  background-color: rgb(206, 228, 247);
+}
+
+.day-record-circle {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  border-radius: 6px;
+  width: 7px;
+  height: 7px;
+  background-color: rgb(141, 182, 223);
+  display: inline-block;
+}
+
+.single-day-record {
+  text-align: left;
+  background-color: inherit;
+  /* width: 100%; */
+  overflow: hidden;
+  height: 30px;
+}
+
+.single-day-record:hover {
+  background-color: rgb(195, 223, 248);
+  cursor: pointer;
+}
+
+.day-record-hour {
+  margin-right: 5px;
+  display: inline;
+}
+
+.day-record-bck {
+  background-color: inherit;
+
+}
+
+.day-record-bck:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+  height: calc(100%-20px);
+}
+
+.day-open {
+  margin: 15px;
+  background-color: rgb(141, 182, 223);
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: -35px 5px 0 0;
+  float: right;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 15px;
+  display: none;
+}
+
+.day-open:hover {
+  cursor: pointer;
+  background-color: rgb(43, 110, 177);
+}
+
+.day-open-visible {
+  display: inherit !important;
+}
+

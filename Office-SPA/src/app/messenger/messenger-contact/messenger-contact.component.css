@@ -1,0 +1,87 @@
+
+.messenger-contact{
+    font-weight: 300;
+    margin: 0;
+    padding: 5px 0px 5px 10px;
+    width: 100%;
+    display: inline-flex;
+}
+
+
+
+.messenger-contact:hover{
+    cursor: pointer;
+}
+
+.active {
+
+    color: white;
+}
+
+.active:hover {
+    color: rgb(221, 220, 220);
+}
+
+.in-active {
+
+    color: rgb(146, 146, 146);
+}
+
+.in-active:hover {
+    color: rgb(121, 120, 120);
+}
+
+.available-icon {
+    margin: 8px 8px 8px 0;
+    padding: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    background-color: rgb(111, 197, 85);
+}
+
+.inavailable-icon {
+    margin: 8px 8px 8px 0;
+    padding: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 4px;
+    border: solid 1px rgb(146, 146, 146);
+}
+
+.messenger-mini-avatar {
+    width:24px;
+    height: 24px;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.messenger-mini-avatar img {
+    border-radius: 12px;
+    padding: 0;
+
+}
+
+.contact-notification{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 12px;
+  color:white;
+  position: absolute;
+  left: 40px;
+}
+
+.contact-notification p {
+  margin-left: 3px;
+  margin-top:-3px;
+}
+
+.contact-notification-invisible {
+  visibility: hidden;
+}
+
+.contact-selected {
+  background-color: rgb(52, 81, 110);
+}

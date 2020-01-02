@@ -1,0 +1,109 @@
+<div *ngIf="timesheets!=null" class="jumbotron" style="background-color: transparent; padding: 0; margin: 0">
+  <div id="time-table" class="container-fluid" style="padding: 0">
+    <div class="tr-row">
+      <div class="td-col-50 day-index background-primary">#</div>
+      <div class="td-col-100 day-name  text-white background-primary day-max">Dzień</div>
+      <div class="td-col-100 day-name  text-white background-primary">Data</div>
+      <div class="td-col-100 day-index background-primary text-white">Rozpoczęcie</div>
+      <div class="td-col-100 day-index background-primary text-white">Zakończenie</div>
+      <div class="td-col-100 day-name background-primary text-white day-max">Godziny</div>
+      <div class="td-col-100 day-name background-primary text-white">Łącznie</div>
+      <div class="td-col-1000 background-primary text-white text-centre day-max">Notatki</div>
+      <div class="td-col-100 day-index background-primary text-white">Edycja</div>
+    </div>
+
+    <div *ngFor="let timesheet of timesheets; let i = index" [attr.data-index]="i" class="tr-row">
+      <div class="td-col-50 text-white day-name text-centre background-primary" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum">&nbsp;</div>
+      <div class="td-col-50 text-white day-name text-centre background-primary" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.startDate.getDate()}}</div>
+
+      <div class="td-col-100 day-name text-centre day-max" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum"></div>
+      <div class="td-col-100 day-name text-centre day-max" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.day}}</div>
+
+      <div class="td-col-100 day-name text-centre" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum"></div>
+      <div class="td-col-100 day-name text-centre" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.startDate | date : 'shortDate'}}</div>
+
+
+      <div class="td-col-100 day-name text-centre">{{timesheet.startDate | date : 'shortTime'}}</div>
+
+      <div class="td-col-100 day-name text-centre" *ngIf="!timesheet.clockedOut">W pracy</div>
+      <div class="td-col-100 day-name text-centre" *ngIf="timesheet.clockedOut">{{timesheet.endTime  | date : 'shortTime'}}</div>
+
+      <div class="td-col-100 day-name text-centre day-max" *ngIf="!timesheet.clockedOut">--</div>
+      <div class="td-col-100 day-name text-centre day-max" *ngIf="timesheet.clockedOut" >{{timesheet.total}}</div>
+
+      <div class="td-col-100 day-name text-centre" *ngIf="!timesheet.clockedOut">--</div>
+      <div class="td-col-100 day-name text-centre" *ngIf="timesheet.clockedOut && i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum" ></div>
+      <div class="td-col-100 day-name text-centre" [className]="(timesheet.sum < 8) ? 'td-col-100 sum-hours-bad text-centre' : 'td-col-100 sum-hours-good text-centre'" *ngIf="timesheet.clockedOut  && (i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum)" >{{timesheet.sum}}</div>
+
+      <div class="td-col-1000 text-padding day-max" *ngIf="!timesheet.clockedOut">--</div>
+      <div class="td-col-1000 text-padding day-max" *ngIf="timesheet.clockedOut">{{timesheet.notes}}</div>
+
+      <ng-container  *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">
+          <div class="td-col-100 day-index text-centre background-primary" *ngIf="!timesheet.clockedOut">--</div>
+          <div class="td-col-100 day-index text-centre background-primary" *ngIf="timesheet.clockedOut"><i class="fa fa-edit fa-2x edit"></i></div>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+  <!-- <table class="table table-bordered" style="padding: 0 0 0 0; width:100%"  width="1200" >
+    <thead>
+      <tr>
+        <th scope="col" class="day-index background-primary">#</th>
+        <th scope="col" class="day-name  text-white background-primary">Dzień</th>
+        <th scope="col" class="day-name  text-white background-primary">Data</th>
+        <th scope="col" class="day-index background-primary text-white">Rozpoczęcie</th>
+        <th scope="col" class="day-index background-primary text-white">Zakończenie</th>
+        <th scope="col" class="day-name background-primary text-white">Godziny</th>
+        <th scope="col" class="day-name background-primary text-white">Łącznie</th>
+        <th scope="col" class="background-primary text-white">Notatki</th>
+        <th scope="col" class="day-index background-primary text-white">Edycja</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timesheet of timesheets; let i = index" [attr.data-index]="i">
+        <th scope="row"  class="day-index background-primary" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum"></th>
+        <th scope="row"  class="day-index background-primary" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.startDate.getDate()}}</th>
+
+        <td class="day-name" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum"></td>
+        <td class="day-name" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.day}}</td>
+
+        <td class="text-centre" *ngIf="i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum"></td>
+        <td class="text-centre" *ngIf="i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum">{{timesheet.startDate | date : 'shortDate'}}</td>
+
+
+        <td class="text-centre">{{timesheet.startDate | date : 'shortTime'}}</td>
+
+        <td class="text-centre" *ngIf="!timesheet.clockedOut">W pracy</td>
+        <td class="text-centre" *ngIf="timesheet.clockedOut">{{timesheet.endTime  | date : 'shortTime'}}</td>
+
+        <td class="text-centre" *ngIf="!timesheet.clockedOut">--</td>
+        <td class="text-centre" *ngIf="timesheet.clockedOut" >{{timesheet.total}}</td>
+
+        <td class="text-centre" *ngIf="!timesheet.clockedOut">--</td>
+        <td class="text-centre" *ngIf="timesheet.clockedOut && i > 0 && timesheets[i].controlSum == timesheets[i-1].controlSum" ></td>
+        <td class="text-centre" [className]="(timesheet.sum < 8) ? 'sum-hours-bad' : 'sum-hours-good'" *ngIf="timesheet.clockedOut  && (i == 0 || timesheets[i].controlSum != timesheets[i-1].controlSum)" >{{timesheet.sum}}</td>
+
+        <td *ngIf="!timesheet.clockedOut">--</td>
+        <td *ngIf="timesheet.clockedOut">{{timesheet.notes}}</td>
+
+        <td class="text-centre" *ngIf="!timesheet.clockedOut">--</td>
+        <td class="text-centre" *ngIf="timesheet.clockedOut"><i class="fa fa-edit fa-2x edit"></i></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tfoot>
+  </table> -->
+
+</div>
+

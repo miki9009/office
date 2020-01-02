@@ -1,0 +1,50 @@
+.module-title {
+  text-align: center;
+
+}
+
+.module-description{
+  color: rgb(70, 70, 70);
+
+}
+
+.module-description-hidden {
+  display: none;
+}
+
+.module-description h4 {
+  background-color: aliceblue;
+  border: solid 1px rgb(224, 237, 248);
+  padding: 10px 10px 10px 10px;
+  border-top-left-radius: 25px;
+  margin: 0;
+}
+
+.module-description h4:hover {
+  cursor: pointer;
+  background-color: rgb(194, 220, 243);
+}
+
+.module-description div {
+  padding: 0;
+  margin: 0;
+}
+
+
+.module-description div p {
+  text-align: justify;
+  background-color: white;
+  padding: 10px 10px 10px 10px;
+  border-bottom-left-radius: 25px;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  margin: 0;
+  border-color: aliceblue;
+}
+
+.learn-more {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: auto;
+  height: 600px;
+}

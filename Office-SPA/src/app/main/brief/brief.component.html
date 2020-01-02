@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col card box-shadow">
+    <div class="card-header" style="background-color: teal; color: white;">
+      <h5><strong>FIRMA</strong></h5>
+    </div>
+
+    <div class="card-body">
+      <app-brief-Office>
+
+      </app-brief-Office>
+    </div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3" routerLink="/main/Office" routerLinkActive="active-link">Przeglądaj</div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!-- Terminarz -->
+  <div class="col-md card box-shadow">
+    <div class="card-header" style="background-color: rgb(60, 123, 204); color: white;">
+      <h5><strong>TERMINARZ</strong> <span class="tasks-day" style="color: white;"><i class="fa fa-calendar mr-2 fa-lg"></i>{{dayDisplay}}</span></h5>
+    </div>
+
+    <div class="card-body" style="max-height: 200px; overflow-y: auto">
+      <ng-container *ngIf="tasksExists(); else noRecords">
+          <div *ngFor="let record of timeTableRecords" class="row task-card">
+
+              <div class="task-card-brfief">
+                  <div class="task-card-hour">{{record.time}}</div>
+                  <div class="task-card-title"><strong>{{record.title}}</strong></div>
+
+              </div>
+              <div class="task-card-description">{{record.description}}</div>
+            </div>
+      </ng-container>
+      <ng-template #noRecords>
+        <div style="text-align: center"><i>Brak wydarzeń na dzisiaj</i></div>
+      </ng-template>
+    </div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3" (click)="Router.navigate(['../main/timetable'])">Otwórz</div>
+    </div>
+  </div>
+
+  <div class="col-md card box-shadow">
+    <div class="card-header" style="background-color: rgb(175, 23, 23); color: white;">
+      <h5><strong>FAKTURY</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3">Otwórz</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col card box-shadow">
+    <div class="card-header" style="background-color: rgb(216, 125, 64); color: white;">
+      <h5><strong>PRACOWNICY</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3"  (click)="Router.navigate(['../main/workers-list'])">Otwórz</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col card box-shadow">
+    <div class="card-header" style="background-color: rgb(133, 20, 161); color: white;">
+      <h5><strong>ZADANIA</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3"  (click)="Router.navigate(['../main/main-tasks'])">Otwórz</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md card box-shadow">
+    <div class="card-header">
+      <h5><strong>NOTATKI</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3">Otwórz</div>
+    </div>
+  </div>
+
+  <div class="col-md card box-shadow">
+    <div class="card-header">
+      <h5><strong>KLIENCI</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3">Otwórz</div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col card box-shadow">
+    <div class="card-header">
+      <h5><strong>PLIKI</strong></h5>
+    </div>
+
+    <div class="card-body"></div>
+
+    <div class="card-footer text-center">
+      <div class="btn btn-primary mt-2 pl-3 pr-3">Otwórz</div>
+    </div>
+  </div>
+</div>

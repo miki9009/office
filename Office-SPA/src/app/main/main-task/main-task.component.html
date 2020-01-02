@@ -1,0 +1,14 @@
+<div class="jumbotron time-table box-shadow card box-shadow" >
+  <h3 class="text-center" style="margin-top: 10px; margin-bottom: -5px;"><strong>Zadania</strong></h3>
+  <hr/>
+  <div class="container ml-5 pr-5">
+
+      <h5  >Grudzień 2019</h5>
+      <hr/>
+      <div *ngFor="let sortedTask of tasksSorted">
+        <app-main-subtask [sortedTask] = "sortedTask"> </app-main-subtask>
+      </div>
+
+  </div>
+
+</div>

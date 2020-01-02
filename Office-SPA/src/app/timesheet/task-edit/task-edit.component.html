@@ -1,0 +1,108 @@
+<!--TIMESHEET POPUP-->
+<div *ngIf="task" class="overlay">
+    <div class="popup">
+        <button type="button" class="button close-button" (click)="close()" aria-label="Close"><i
+                class="fa fa-times fa-2x"></i>
+        </button>
+        <div class="label">
+            <h4>Nowe Zadanie</h4>
+        </div>
+        <br />
+        <div class="col-md-12" style="height: 500px; overflow:scroll">
+
+            <form (ngSubmit)="submit()" class="center-block" #saveTimeRecordForm="ngForm">
+                <!--TASK NAME-->
+                <div class="form-group">
+                    <label>Nazwa zadania</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                        </div>
+                        <input name="title" class="form-control" placeholder="Nazwa zadania" type="text"
+                            [(ngModel)]="task.title" required  [disabled] = "!edit">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Termin</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                        </div>
+                        <input name="deadline" id="date-picker-date" type="text" placeholder="dd.mm.rrrr" class="form-control"
+                            [(ngModel)]="task.deadline" bsDatepicker  [disabled] = "!edit">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Godzina</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-clock-o"></i> </span>
+                        </div>
+                        <input name="time" class="form-control" placeholder="Nazwa zadania"
+                            type="time" [(ngModel)]="task.time" required  [disabled] = "!edit">
+                    </div>
+
+                </div>
+
+                <!--PRIORITY-->
+                <div class="form-group">
+                    <label>Priorytet: </label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-edit"></i> </span>
+                        </div>
+
+                        <select name="priority" class="form-control" placeholder="Przełożony" type="text" [(ngModel)]="task.priority"  [disabled] = "!edit">
+                            <option value="0" >Niski</option>
+                            <option  value="1"  selected="selected">Średni</option>
+                            <option value="2">Wysoki</option>
+                            <option value="3">Bardzo wysoki</option>
+                        </select>
+                    </div>
+
+                </div> <!-- form-group// -->
+
+                <div class="form-group">
+                    <label>Zleceniodawca</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <ng-container *ngIf="edit">
+                          <select name="supervisor" class="form-control" placeholder="Przełożony" type="text"  [(ngModel)]="task.orderingPersonId">
+                            <option *ngFor="let worker of workers" id="{{worker.id}}" value="{{worker.id}}" >{{worker.surname + ' ' + worker.name }}</option>
+
+                        </select>
+                        </ng-container>
+                        <ng-container *ngIf="!edit">
+                          <select name="supervisor" class="form-control" placeholder="Przełożony" type="text" disabled >
+                            <ng-container *ngFor="let worker of workers">
+                            <option *ngIf="worker.id == task.orderingPersonId" selected >{{worker.surname + ' ' + worker.name}}</option>
+                            </ng-container>
+                        </select>
+                        </ng-container>
+                    </div>
+
+                </div> <!-- form-group// -->
+
+                <!--TASK DESCRIPTION-->
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Opis zadania</label>
+                    <textarea class="form-control" name="notes" placeholder="Opis..." rows="3" [(ngModel)]="task.description"  [disabled] = "!edit"></textarea>
+                </div>
+                <div *ngIf="edit" class="d-flex justify-content-center">
+                    <button type="submit" class="btn  btn-primary col-md-5">Zatwierdź</button>
+                </div>
+
+
+
+            </form>
+        </div>
+        <br />
+
+    </div>
+</div>

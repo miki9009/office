@@ -1,0 +1,170 @@
+<div class="jumbotron time-table box-shadow card box-shadow">
+<h3 class="text-center" style="margin-top: 10px; margin-bottom: -5px;"><strong>Profil Firmy</strong></h3>
+<hr/>
+
+    <form  #createOfficeProfileForm="ngForm" (ngSubmit)="saveProfile()">
+        <div class="row">
+          <div class="col-lg-6 right-line profile-column">
+
+              <div class="form-group row">
+                  <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Nazwa</label>
+                  <div class="col-md-9 input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" style="width: 35px"> <i class="fa fa-edit"></i> </span>
+                       </div>
+                      <input type="name" class="form-control" id="Office-name" placeholder="Nazwa" name="name"  [(ngModel)]="model.name" pattern="[A-Za-z]{3}" title="Three letter country code">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Email</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-envelope"></i> </span>
+                         </div>
+                      <input type="email" class="form-control" id="Office-mail" placeholder="Email" name="email"  [(ngModel)]="model.email" >
+                      <div *ngIf="validation.email(model.email)" class="field-validation">
+                        <div>Należy podać prawidłową formę maila np. jan@mail.com</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Adres</label>
+                      <div class="col-md-9 input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" style="width: 35px"> <i class="fa fa-map-marker"></i> </span>
+                           </div>
+                        <input type="address" class="form-control" id="Office-address" placeholder="Marszałkowska 11/4a" name="address"  [(ngModel)]="model.detailAddress">
+                      </div>
+                    </div>
+
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Miejscowość</label>
+                      <div class="col-md-9 input-group">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text" style="width: 35px"> <i class="fa fa-map-marker"></i> </span>
+                           </div>
+                        <input type="city" class="form-control" id="Office-city" placeholder="Warszawa" name="city"  [(ngModel)]="model.city">
+                        <div *ngIf="validation.onlyLetters('Office-city') || validation.FirstCapital('Office-city') || validation.minLength('Office-city',2)" class="field-validation">
+                          <div>Nazwa miejscowości musi składać się z co najmniej 2 liter</div>
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Kod Pocztowy</label>
+                        <div class="col-md-9 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="width: 35px"> <i class="fa fa-map-marker"></i> </span>
+                             </div>
+                          <input type="post-code" class="form-control" id="Office-postcode" placeholder="00-000" name="post-code"  [(ngModel)]="model.postCode">
+                          <div *ngIf="validation.postCode('Office-postcode') || validation.minLength(model.postCode, 6)" class="field-validation">
+                            <div>Należy podać prawidłową formę dla kodu pocztowego 00-000</div>
+                          </div>
+                        </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Konto Bankowe</label>
+                        <div class="col-md-9 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="width: 35px"> <i class="fa fa-money"></i> </span>
+                             </div>
+                          <input class="form-control" id="Office-account" placeholder="00 0000 0000 0000 0000 0000 0000" name="bankAccount"  [(ngModel)]="model.bankAccount">
+                          <div *ngIf="validation.bankAccountFormat('Office-account', model.bankAccount) || validation.minLength(model.bankAccount, 32)" class="field-validation">
+                            <div>Należy podać prawidłową formę dla konta bankowego 26 cyfr 00 1111 2222 3333 4444 5555 666</div>
+                          </div>
+                        </div>
+                  </div>
+          </div>
+
+          <div class="col-lg-6 profile-column">
+              <div class="form-group row">
+                  <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">REGON</label>
+                  <div class="col-md-9 input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" style="width: 35px"> <i class="fa fa-edit"></i> </span>
+                       </div>
+                    <input class="form-control" id="Office-regon" placeholder="000000000" name="regon"  [(ngModel)]="model.regon">
+                    <div *ngIf="validation.onlyNumbers('Office-regon') || validation.minLength(model.regon, 10) || validation.maxLength('Office-regon', 9)" class="field-validation">
+                      <div>Należy podać prawidłową formę dla pola REGON, ilość cyfr 9</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">PESEL</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-edit"></i> </span>
+                         </div>
+                      <input class="form-control" id="Office-pesel" placeholder="00000000000" name="pesel"  [(ngModel)]="model.pesel">
+                      <div *ngIf="validation.onlyNumbers('Office-pesel') || validation.minLength(model.pesel, 11) || validation.maxLength('Office-pesel',11)" class="field-validation">
+                        <div>Należy podać prawidłową formę dla pola PESEL, ilość cyfr 11</div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">NIP</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-edit"></i> </span>
+                         </div>
+                      <input class="form-control" id="Office-nip" placeholder="0000000000" name="nip"  [(ngModel)]="model.nip">
+                      <div *ngIf="validation.onlyNumbers('Office-nip') || validation.minLength(model.nip, 10) || validation.maxLength('Office-nip',10)" class="field-validation">
+                        <div>Należy podać prawidłową formę dla pola NIP, ilość cyfr 10</div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">KRS</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-edit"></i> </span>
+                         </div>
+                      <input class="form-control" id="Office-krs" placeholder="0000000000" name="krs"  [(ngModel)]="model.krs">
+                      <div *ngIf="validation.onlyNumbers('Office-krs') || validation.minLength(model.krs, 10) || validation.maxLength('Office-krs', 10)" class="field-validation">
+                        <div>Należy podać prawidłową formę dla pola KRS, ilość cyfr 10</div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Telefon Stacjonarny</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-phone"></i> </span>
+                         </div>
+                      <input class="form-control" id="Office-phone" placeholder="000 00 00" name="phoneNumber"  [(ngModel)]="model.phoneNumber">
+                      <div *ngIf="validation.phoneFormat('Office-phone', model.phoneNumber) || validation.minLength(model.phoneNumber, 9)" class="field-validation">
+                        <div>Należy podać prawidłową formę dla telefonu komórkowego o długości 8 cyfr 111 22 33</div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-md-3 col-form-label label-underscore">Telefon Komórkowy</label>
+                    <div class="col-md-9 input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="width: 35px"> <i class="fa fa-mobile"></i> </span>
+                         </div>
+                      <input class="form-control" id="Office-mobile" placeholder="000 000 000" name="mobile"  [(ngModel)]="model.mobile">
+                      <div *ngIf="validation.phoneMobileFormat('Office-mobile', model.mobile) || validation.minLength(model.mobile, 11)" class="field-validation">
+                        <div>Należy podać prawidłową formę dla telefonu komórkowego o długości 9 (lub 10) cyfr 111 222 333</div>
+                      </div>
+                    </div>
+                </div>
+          </div>
+        </div>
+
+        <div class="row text-center center">
+            <div class="col align-self-center">
+                <button  type="submit" class="btn btn-primary btn-lg mt-2 mb-2 ml-4 mr-4 pr-4 pl-4 pt-1 pb-1">Zapisz</button>
+            </div>
+
+        </div>
+        </form>
+  </div>

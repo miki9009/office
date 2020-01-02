@@ -1,0 +1,240 @@
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+.month {
+  padding: 15px 25px;
+  width: 100%;
+  background-color: #2C3E50;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .prev:hover {
+  cursor: pointer;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.month .next:hover{
+  cursor: pointer;
+}
+
+.weekdays {
+  padding: 0;
+  margin: 0;
+  max-width: 800px;
+  margin: auto;
+
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 14.25%;
+  padding-top: 5px;
+  color: #666;
+  text-align: center;
+  border: rgb(211, 211, 211) solid 1px;
+}
+
+.days {
+    padding: 0;
+  margin: 0;
+  max-width: 800px;
+  margin: auto;
+}
+li.sunday{
+    background-color:  rgb(253, 222, 222);
+}
+
+li.sunday:hover{
+  cursor: pointer;
+  background-color: #daf6f8;
+}
+
+li.border-right{
+    border-right: rgb(211, 211, 211) solid 1px;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 14.25%;
+  font-size:20px;
+  color: #777;
+  border-left: rgb(211, 211, 211) solid 1px;
+  border-bottom: rgb(211, 211, 211) solid 1px;
+  height: 70px;
+  padding: 5px;
+}
+
+.days li.inactive {
+    background-color: #2C3E50;
+    color: #2C3E50;
+    border-color: #2C3E50;
+}
+
+.days li.active {
+  background: #1abc9c;
+  color: white !important;
+}
+
+.days li.day-cell {
+
+}
+
+.days li.day-cell:hover {
+  cursor: pointer;
+  background-color: #daf6f8;
+}
+
+.days li span.today {
+  border: solid 4px rgb(228, 125, 113);
+  padding:2px;
+  border-radius: 25px;
+}
+
+
+.day-work {
+  background-color: rgb(193, 255, 101) !important;
+}
+
+.day-work-remote {
+  background-color: rgb(255, 230, 6) !important;
+}
+
+.day-work-bussiness-trip {
+  background-color: rgb(137, 252, 242) !important;
+}
+
+.day-work-off-waiting {
+  background-color: rgb(253, 68, 68) !important;
+}
+
+.day-work-off {
+  background-color: rgb(250, 196, 115) !important;
+}
+
+.day-work-sick {
+  background-color: rgb(81, 78, 255) !important;
+}
+
+.day-work-off-demand {
+  background-color: rgb(255, 78, 255) !important;
+}
+
+.day-selected {
+  background-color: rgb(204, 241, 179) !important;
+}
+
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.action-button {
+  border-radius: 0;
+}
+
+.action-button-disabled {
+  border-radius: 0;
+  color: rgb(175, 175, 175);
+}
+
+.action-button-disabled:hover {
+  cursor: default;
+  background-color: #2C3E50;
+  border: #2C3E50 solid 1px;
+}
+
+ul.legend {
+  display:inline-block;
+  color: white;
+  margin: 0;
+  padding: 0;
+  background-color: #2C3E50;
+}
+
+
+.calendar-content .row {
+  margin: 0 0 1px 0;
+}
+
+
+.legend li {
+  display: inline-flex;
+  padding:10px;
+  margin:10px;
+  font-size: 0.7em;
+}
+
+.legend li div{
+  padding: 0;
+  margin-top: 2px;
+  margin-right: 5px;
+  border: solid 1px white;
+  width: 10px;
+  height: 10px;
+}
+
+
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;   height: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;   height: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;    height: 12.5%;}
+}
+
